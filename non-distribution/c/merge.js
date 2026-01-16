@@ -1,39 +1,9 @@
 #!/usr/bin/env node
 
-/*
-Merge the current inverted index (assuming the right structure) with the global index file
-Usage: input > ./merge.js global-index > output
-
-The inverted indices have the different structures!
-
-Each line of a local index is formatted as:
-  - `<word/ngram> | <frequency> | <url>`
-
-Each line of a global index is be formatted as:
-  - `<word/ngram> | <url_1> <frequency_1> <url_2> <frequency_2> ... <url_n> <frequency_n>`
-  - Where pairs of `url` and `frequency` are in descending order of frequency
-  - Everything after `|` is space-separated
-
--------------------------------------------------------------------------------------
-Example:
-
-local index:
-  word1 word2 | 8 | url1
-  word3 | 1 | url9
-EXISTING global index:
-  word1 word2 | url4 2
-  word3 | url3 2
-
-merge into the NEW global index:
-  word1 word2 | url1 8 url4 2
-  word3 | url3 2 url9 1
-
-Remember to error gracefully, particularly when reading the global index file.
-*/
-
 const fs = require('fs');
 const readline = require('readline');
-// The `compare` function can be used for sorting.
+
+// The `compare` function used for sorting based on frequency descending.
 const compare = (a, b) => {
   if (a.freq > b.freq) {
     return -1;
@@ -43,53 +13,135 @@ const compare = (a, b) => {
     return 0;
   }
 };
+
 const rl = readline.createInterface({
   input: process.stdin,
 });
 
-// 1. Read the incoming local index data from standard input (stdin) line by line.
+// 1. Read the incoming local index data from standard input (stdin)
 let localIndex = '';
 rl.on('line', (line) => {
+  localIndex += line + '\n';
 });
 
 rl.on('close', () => {
-  // 2. Read the global index name/location, using process.argv
-  // and call printMerged as a callback
+  // 2. Read the global index name/location from process.argv
+  const globalIndexFile = process.argv[
+      2
+  ];
+
+  if (!globalIndexFile) {
+    console.error('Usage: input > ./merge.js <global-index-file>');
+    process.exit(1);
+  }
+  // Check if file exists to handle the first run gracefully
+  if (!fs.existsSync(globalIndexFile)) {
+    printMerged(null, ''); // Pass empty string if global file doesn't exist yet
+  } else {
+    fs.readFile(globalIndexFile, 'utf8', (err, data) => {
+      printMerged(err, data);
+    });
+  }
 });
 
 const printMerged = (err, data) => {
   if (err) {
-    console.error('Error reading file:', err);
+    console.error('Error reading global index file:', err);
     return;
   }
-
-  // Split the data into an array of lines
-  const localIndexLines = localIndex.split('\n');
-  const globalIndexLines = data.split('\n');
-
-  localIndexLines.pop();
-  globalIndexLines.pop();
+  // Split the data into arrays and filter out empty lines
+  const localIndexLines = localIndex.split('\n').filter((line) => line.trim() !== '');
+  const globalIndexLines = data.split('\n').filter((line) => line.trim() !== '');
 
   const local = {};
   const global = {};
 
-  // 3. For each line in `localIndexLines`, parse them and add them to the `local` object where keys are terms and values contain `url` and `freq`.
+  // 3. Parse Local Index: <word/ngram> | <frequency> | <url>
   for (const line of localIndexLines) {
-    local[term] = {url, freq};
+    const parts = line.split('|').map((p) => p.trim());
+    if (parts.length === 3) {
+      const term = parts[
+          0
+      ];
+      const freq = parseInt(parts[
+          1
+      ],
+      10);
+      const url = parts[
+          2
+      ];
+      local[term
+      ] = {
+        url, freq,
+      };
+    }
   }
-
-  // 4. For each line in `globalIndexLines`, parse them and add them to the `global` object where keys are terms and values are arrays of `url` and `freq` objects.
-  // Use the .trim() method to remove leading and trailing whitespace from a string.
+  // 4. Parse Global Index: <word/ngram> | <url_1> <frequency_1> ...
   for (const line of globalIndexLines) {
-    global[term] = urlfs; // Array of {url, freq} objects
-  }
+    const parts = line.split('|').map((p) => p.trim());
+    if (parts.length === 2) {
+      const term = parts[
+          0
+      ];
+      const pairs = parts[
+          1
+      ].split(/\s+/);
+      const urlfs = [];
 
-  // 5. Merge the local index into the global index:
-  // - For each term in the local index, if the term exists in the global index:
-  //     - Append the local index entry to the array of entries in the global index.
-  //     - Sort the array by `freq` in descending order.
-  // - If the term does not exist in the global index:
-  //     - Add it as a new entry with the local index's data.
-  // 6. Print the merged index to the console in the same format as the global index file:
-  //    - Each line contains a term, followed by a pipe (`|`), followed by space-separated pairs of `url` and `freq`.
+      for (let i = 0; i < pairs.length; i += 2) {
+        if (pairs[i
+        ] && pairs[i + 1
+        ]) {
+          urlfs.push({
+            url: pairs[i
+            ], freq: parseInt(pairs[i + 1
+            ],
+            10),
+          });
+        }
+      }
+      global[term
+      ] = urlfs;
+    }
+  }
+  // 5. Merge the local index into the global index
+  for (const term in local) {
+    const localEntry = local[term
+    ];
+
+    if (global[term
+    ]) {
+      // Check if this URL already exists for this term to avoid duplicates
+      const existingUrlIndex = global[term
+      ].findIndex((e) => e.url === localEntry.url);
+      if (existingUrlIndex !== -1) {
+        global[term
+        ][existingUrlIndex
+        ].freq += localEntry.freq;
+      } else {
+        global[term
+        ].push(localEntry);
+      }
+      // Sort by frequency descending
+      global[term
+      ].sort(compare);
+    } else {
+      // New term for the global index
+      global[term
+      ] = [localEntry,
+      ];
+    }
+  }
+  // 6. Print the merged index
+  for (const term in global) {
+    const dataString = global[term
+    ]
+        .map((entry) => `${entry.url
+        } ${entry.freq
+        }`)
+        .join(' ');
+    console.log(`${term
+    } | ${dataString
+    }`);
+  }
 };
