@@ -13,14 +13,11 @@ test('(3 pts) (scenario) 40 bytes object', () => {
   expect(serialized.length).toEqual(40);
 });
 
-test('(3 pts) (scenario) object fix', () => {
-  /* Modify the following object so that when serialized,
-           results in the expected string. */
+test('(3 pts) (scenario) expected object', () => {
+  /* Prepare an object so it results in an expected serialized string. */
+  let object = null;
 
-  let object = {a: 'jcerb', b: -87, c: (a) => 4};
-
-  // eslint-disable-next-line
-    const serializedObject = '{"type":"object","value":{"a":"{\\"type\\":\\"string\\",\\"value\\":\\"jcarb\\"}","b":"{\\"type\\":\\"number\\",\\"value\\":\\"1\\"}","c":"{\\"type\\":\\"function\\",\\"value\\":\\"(a, b) => a + b\\"}"}}';
+  let serializedObject = ''; /* Add here the expected serialized string by using util.serialize */
   expect(util.serialize(object)).toEqual(serializedObject);
 });
 

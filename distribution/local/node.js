@@ -17,6 +17,7 @@ function setNodeConfig() {
       .help(false)
       .version(false)
       .parse();
+
   let maybeIp; let maybePort; let maybeOnStart;
   if (typeof args.ip === 'string') {
     maybeIp = args.ip;
@@ -34,23 +35,32 @@ function setNodeConfig() {
   }
 
   if (typeof args.config === 'string') {
-    const {ip, port, onStart} = globalThis.distribution.util.deserialize(
-        args.config,
-    );
-    if (typeof ip === 'string') {
-      maybeIp = ip;
+    let config = undefined;
+    try {
+      config = globalThis.distribution.util.deserialize(args.config);
+    } catch (error) {
+      try {
+        config = JSON.parse(args.config);
+      } catch {
+        console.error('Cannot deserialize config string: ' + args.config);
+        process.exit(1);
+      }
     }
-    if (typeof port === 'number') {
-      maybePort = port;
+
+    if (typeof config?.ip === 'string') {
+      maybeIp = config?.ip;
     }
-    if (typeof onStart === 'function') {
-      maybeOnStart = onStart;
+    if (typeof config?.port === 'number') {
+      maybePort = config?.port;
+    }
+    if (typeof config?.onStart === 'function') {
+      maybeOnStart = config?.onStart;
     }
   }
 
   // Default values for config
-  maybeIp = maybeIp || '127.0.0.1';
-  maybePort = maybePort || 1234;
+  maybeIp = maybeIp ?? '127.0.0.1';
+  maybePort = maybePort ?? 1234;
 
   return {
     ip: maybeIp,
@@ -85,7 +95,6 @@ function start(callback) {
 
 
     /*
-
       A common pattern in handling HTTP requests in Node.js is to have a
       subroutine that collects all the data chunks belonging to the same
       request. These chunks are aggregated into a body variable.
@@ -97,7 +106,7 @@ function start(callback) {
       format.
 
       Our nodes expect data in JSON format.
-  */
+    */
 
     // Write some code...
 
@@ -109,14 +118,14 @@ function start(callback) {
 
     req.on('end', () => {
 
-      /* Here, you can handle the service requests.
-      Use the local routes service to get the service you need to call.
-      You need to call the service with the method and arguments provided in the request.
-      Then, you need to serialize the result and send it back to the caller.
+      /*
+        Here, you can handle the service requests.
+        Use the local routes service to get the service you need to call.
+        You need to call the service with the method and arguments provided in the request.
+        Then, you need to serialize the result and send it back to the caller.
       */
 
       // Write some code...
-
 
     });
   });
@@ -130,14 +139,18 @@ function start(callback) {
     remotely through the service interface.
   */
 
+  // Important: allow tests to access server
+  globalThis.distribution.node.server = server;
   const config = globalThis.distribution.node.config;
+
   server.once('listening', () => {
-    globalThis.distribution.node.server = server;
     callback(null);
   });
+
   server.once('error', (error) => {
     callback(error);
   });
+
   server.listen(config.port, config.ip);
 }
 

@@ -1,6 +1,6 @@
 /**
  * @typedef {import("../types").Callback} Callback
- * @typedef {'comm' | 'groups' | 'status' | 'routes' | 'gossip' | 'mem' | 'store' | 'mr'} ServiceName
+ * @typedef {string} ServiceName
  */
 
 

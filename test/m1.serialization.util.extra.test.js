@@ -64,6 +64,22 @@ test('(5 pts) serializeRainbowObjectCirc', () => {
   expect(deserialized).toEqual(object);
 });
 
+test('(0 pts) serialize and deserialize preserves cyclic references', () => {
+  const original = {};
+  original.self = original;
+  const serialized = util.serialize(original);
+  const deserialized = util.deserialize(serialized);
+  expect(deserialized.self).toBe(deserialized);
+});
+
+test('(0 pts) deserializeReference follows nested paths', () => {
+  const original = {a: {}};
+  original.a.self = original.a;
+  const serialized = util.serialize(original);
+  const deserialized = util.deserialize(serialized);
+  expect(deserialized.a.self).toBe(deserialized.a);
+});
+
 test('(5 pts) serialize and deserialize structure with cycle-like reference', () => {
   const x = {a: 1, b: 2, c: 3};
   const original = {a: x, b: x};
@@ -115,7 +131,6 @@ test('(5 pts) serialize and deserialize array with references', () => {
   expect(deserialized).toEqual(original);
 });
 
-
 test('(5 pts) serialize and deserialize array with references deep', () => {
   const x = {a: 1};
   const y = {z: x};
@@ -125,4 +140,41 @@ test('(5 pts) serialize and deserialize array with references deep', () => {
   const serialized = util.serialize(original);
   const deserialized = util.deserialize(serialized);
   expect(deserialized).toEqual(original);
+});
+
+test('(0 pts) serialize native function uses native mapping', () => {
+  const nativeFn = require('path').join;
+  const serialized = util.serialize(nativeFn);
+  const deserialized = util.deserialize(serialized);
+  expect(deserialized).toBe(nativeFn);
+});
+
+test('(0 pts) serialize and deserialize preserves cyclic references', () => {
+  const original = {};
+  original.self = original;
+  const serialized = util.serialize(original);
+  const deserialized = util.deserialize(serialized);
+  expect(deserialized.self).toBe(deserialized);
+});
+
+test('(0 pts) deserializeReference follows nested paths', () => {
+  const original = {a: {}};
+  original.a.self = original.a;
+  const serialized = util.serialize(original);
+  const deserialized = util.deserialize(serialized);
+  expect(deserialized.a.self).toBe(deserialized.a);
+});
+
+test('(0 pts) serialize native function uses native mapping', () => {
+  const nativeFn = require('path').join;
+  const serialized = util.serialize(nativeFn);
+  const parsed = JSON.parse(serialized);
+  const deserialized = util.deserialize(serialized);
+  expect(parsed.type).toEqual('native');
+  expect(deserialized).toBe(nativeFn);
+});
+
+test('(0 pts) deserialize rejects unknown native identifiers', () => {
+  const bad = JSON.stringify({type: 'native', value: 'missing.fn'});
+  expect(() => util.deserialize(bad)).toThrow();
 });

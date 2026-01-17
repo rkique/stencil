@@ -128,6 +128,7 @@ try {
   const lines2 = file2.split('\n').filter((line) => line.trim().length !== 0);
 
   if (lines1.length !== lines2.length) {
+    console.log(`Expected global index to have ${lines2.length} lines, received ${lines1.length} lines.`);
     exit(1);
   }
 
