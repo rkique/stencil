@@ -5,7 +5,6 @@
  * @typedef {Object} StoreConfig
  * @property {?string} key
  * @property {?string} gid
- * @property {string} action
  *
  * @typedef {StoreConfig | string | null} SimpleConfig
  */
@@ -42,4 +41,13 @@ function del(configuration, callback) {
   return callback(new Error('store.del not implemented'));
 }
 
-module.exports = {put, get, del};
+/**
+ * @param {any} state
+ * @param {SimpleConfig} configuration
+ * @param {Callback} callback
+ */
+function append(state, configuration, callback) {
+  return callback(new Error('store.append not implemented'));
+}
+
+module.exports = {put, get, del, append};

@@ -130,8 +130,10 @@ if [ -z "$PATTERN" ]; then
     fi
 fi
 
-# Exclude "non-distribution" tests by default unless -nd is specified
-if ! $INCLUDE_NON_DISTRIBUTION; then
+# Scope to non-distribution when -nd is specified, otherwise exclude it.
+if $INCLUDE_NON_DISTRIBUTION; then
+    JEST_COMMAND_FLAGS+=" --testPathIgnorePatterns \"^(?!.*non-distribution).*\""
+else
     JEST_COMMAND_FLAGS+=" --testPathIgnorePatterns \"non-distribution\""
 fi
 

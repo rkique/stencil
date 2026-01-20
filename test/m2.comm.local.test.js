@@ -41,6 +41,22 @@ test('(10 pts) comm: status.get()', (done) => {
   });
 });
 
+test('(0 pts) comm defaults gid to local', (done) => {
+  const node = distribution.node.config;
+  const remote = {node: node, service: 'status', method: 'get'};
+  const message = ['nid'];
+
+  local.comm.send(message, remote, (e, v) => {
+    try {
+      expect(e).toBeFalsy();
+      expect(v).toEqual(id.getNID(node));
+      done();
+    } catch (error) {
+      done(error);
+    }
+  });
+});
+
 test('(10 pts) comm: status.get() with nonexistent key', (done) => {
   const node = distribution.node.config;
   const remote = {node: node, service: 'status', method: 'get'};

@@ -9,6 +9,15 @@ function put(state, configuration, callback) {
 };
 
 /**
+ * @param {any} state
+ * @param {SimpleConfig} configuration
+ * @param {Callback} callback
+ */
+function append(state, configuration, callback) {
+  return callback(new Error('mem.append not implemented'));
+};
+
+/**
  * @param {SimpleConfig} configuration
  * @param {Callback} callback
  */
@@ -24,4 +33,4 @@ function del(configuration, callback) {
   return callback(new Error('mem.del not implemented'));
 };
 
-module.exports = {put, get, del};
+module.exports = {put, get, del, append};

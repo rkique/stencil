@@ -73,23 +73,25 @@ const printMerged = (err, data) => {
   const local = {};
   const global = {};
 
-  // 3. For each line in `localIndexLines`, parse them and add them to the `local` object where keys are terms and values contain `url` and `freq`.
+  // 3. For each line in `localIndexLines`, parse them and add them to the `local` object
+  // where keys are terms and values store a url->freq map (one entry per url).
   for (const line of localIndexLines) {
-    local[term] = {url, freq};
   }
 
-  // 4. For each line in `globalIndexLines`, parse them and add them to the `global` object where keys are terms and values are arrays of `url` and `freq` objects.
+  // 4. For each line in `globalIndexLines`, parse them and add them to the `global` object
+  // where keys are terms and values are url->freq maps (one entry per url).
   // Use the .trim() method to remove leading and trailing whitespace from a string.
   for (const line of globalIndexLines) {
-    global[term] = urlfs; // Array of {url, freq} objects
+    global[term] = grouped; // Map<url, freq>
   }
 
   // 5. Merge the local index into the global index:
   // - For each term in the local index, if the term exists in the global index:
-  //     - Append the local index entry to the array of entries in the global index.
-  //     - Sort the array by `freq` in descending order.
+  //     - Merge by url so there is at most one entry per url.
+  //     - Sum frequencies for duplicate urls.
   // - If the term does not exist in the global index:
   //     - Add it as a new entry with the local index's data.
   // 6. Print the merged index to the console in the same format as the global index file:
   //    - Each line contains a term, followed by a pipe (`|`), followed by space-separated pairs of `url` and `freq`.
+  //    - Terms should be printed in alphabetical order.
 };

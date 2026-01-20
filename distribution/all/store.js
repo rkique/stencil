@@ -11,7 +11,6 @@
  * @typedef {Object} StoreConfig
  * @property {string | null} key
  * @property {string} gid
- * @property {string} action
  *
  * @typedef {StoreConfig | string | null} SimpleConfig
  */
@@ -45,6 +44,15 @@ function store(config) {
   }
 
   /**
+   * @param {any} state
+   * @param {SimpleConfig} configuration
+   * @param {Callback} callback
+   */
+  function append(state, configuration, callback) {
+    return callback(new Error('store.append not implemented'));
+  }
+
+  /**
    * @param {SimpleConfig} configuration
    * @param {Callback} callback
    */
@@ -62,7 +70,7 @@ function store(config) {
 
   /* For the distributed store service, the configuration will
           always be a string */
-  return {get, put, del, reconf};
+  return {get, put, append, del, reconf};
 }
 
 module.exports = store;

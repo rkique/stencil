@@ -6,6 +6,8 @@ comm     A message communication interface          send
 groups   A mapping from group names to nodes        get, put, add, rem, del
 gossip   The receiver part of the gossip protocol   recv
 routes   A mapping from names to functions          get, put
+mem      An in-memory key/value store               get, put, del, append
+store    A persistent key/value store               get, put, del, append
 
 */
 

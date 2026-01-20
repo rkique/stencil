@@ -10,13 +10,13 @@
  * @typedef {Object} StoreConfig
  * @property {string | null} key
  * @property {string} gid
- * @property {string} action
  *
  * @typedef {StoreConfig | string | null} SimpleConfig
  *
  * @typedef {Object} Mem
  * @property {(configuration: SimpleConfig, callback: Callback) => void} get
  * @property {(state: any, configuration: SimpleConfig, callback: Callback) => void} put
+ * @property {(state: any, configuration: SimpleConfig, callback: Callback) => void} append
  * @property {(configuration: SimpleConfig, callback: Callback) => void} del
  * @property {(configuration: Object.<string, Node>, callback: Callback) => void} reconf
  */
@@ -49,6 +49,15 @@ function mem(config) {
   }
 
   /**
+   * @param {any} state
+   * @param {SimpleConfig} configuration
+   * @param {Callback} callback
+   */
+  function append(state, configuration, callback) {
+    return callback(new Error('mem.append not implemented'));
+  }
+
+  /**
    * @param {SimpleConfig} configuration
    * @param {Callback} callback
    */
@@ -68,6 +77,7 @@ function mem(config) {
   return {
     get,
     put,
+    append,
     del,
     reconf,
   };
