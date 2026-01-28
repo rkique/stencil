@@ -29,8 +29,12 @@ const fs = require('fs');
 const {execSync} = require('child_process');
 const path = require('path');
 
-
 function query(indexFile, args) {
+  const escaped = args.join(' ').replace(/'/g, `'\"'\"'`);
+  const argsList = `'${escaped}'`;
+  execSync(`grep "$(echo ${argsList}  \
+    | ./c/process.sh | ./c/stem.js | \
+     tr '\\r\\n' ' ')" ${indexFile}`, {encoding: 'utf-8', stdio: 'inherit'});
 }
 
 const args = process.argv.slice(2); // Get command-line arguments

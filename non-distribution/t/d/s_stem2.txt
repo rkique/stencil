@@ -1,0 +1,10 @@
+run
+walk
+quick
+jump
+class
+happy
+forget
+reorganize
+swim
+box

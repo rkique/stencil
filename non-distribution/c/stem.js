@@ -14,6 +14,12 @@ const rl = readline.createInterface({
   terminal: false,
 });
 
+// For each line, log the Porter Stem of the string.
 rl.on('line', function(line) {
-  // Print the Porter stem from `natural` for each element of the stream.
+  const stringArray = line.split(' ');
+  console.log(stringArray
+      .map((word, i, _) =>
+        natural.PorterStemmer.stem(word), stringArray)
+      .join(' '));
 });
+

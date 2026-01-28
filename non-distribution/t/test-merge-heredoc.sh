@@ -22,6 +22,10 @@ NEW_GLOBAL_INDEX_FILE="$(
     echo "$LOCAL_INDEX_FILE" | ./c/merge.js <(echo "$INITIAL_GLOBAL_INDEX_FILE") | sort
 )"
 
+echo "NEW_GLOBAL_INDEX_FILE:"
+echo "$NEW_GLOBAL_INDEX_FILE"
+echo ""
+
 EXPECTED_GLOBAL_INDEX_FILE="$(
 cat << EOF
 simpl link | https://cs.brown.edu/courses/csci1380/sandbox/1 1

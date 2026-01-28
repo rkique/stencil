@@ -1,0 +1,6 @@
+the
+quick
+brown
+the     quick
+quick   brown
+the     quick   brown
