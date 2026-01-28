@@ -4,14 +4,14 @@
 # compares against the extracted text in d/s_getText2.txt 
 # Note: headers are capitalized when using html-to-text.
 
-T_FOLDER=${T_FOLDER:-t}
+T_FOLDER=${T_FOLDER:-}
 R_FOLDER=${R_FOLDER:-}
 
 cd "$(dirname "$0")/..$R_FOLDER" || exit 1
 
 DIFF=${DIFF:-diff}
 
-if $DIFF <(cat "$T_FOLDER"/d/s_getText1.txt | c/getText.js | sort) <(sort "$T_FOLDER"/d/s_getText2.txt) >&2;
+if $DIFF <(cat d/s_getText1.txt | ../c/getText.js | sort) <(sort d/s_getText2.txt) >&2;
 then
     echo "$0 success: texts are identical"
     exit 0

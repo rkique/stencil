@@ -2,14 +2,14 @@
 # This is a student test
 # Processes the text content in d/s_process1.txt, 
 # and compares it against d/s_process2.txt
-T_FOLDER=${T_FOLDER:-t}
+T_FOLDER=${T_FOLDER:-}
 R_FOLDER=${R_FOLDER:-}
 
 cd "$(dirname "$0")/..$R_FOLDER" || exit 1
 
 DIFF=${DIFF:-diff}
 
-if $DIFF <(cat "$T_FOLDER"/d/s_process1.txt | c/process.sh | sort) <(sort "$T_FOLDER"/d/s_process2.txt) >&2;
+if $DIFF <(cat "$T_FOLDER"/d/s_process1.txt | ../c/process.sh | sort) <(sort "$T_FOLDER"/d/s_process2.txt) >&2;
 then
     echo "$0 success: texts are identical"
     exit 0

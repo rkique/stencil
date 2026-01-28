@@ -1,5 +1,456 @@
-meanings | word.golf 1 word.golf/help 1 
-neighbors | word.golf 4 word.golf/help 1 
-shouting | word.golf 3 word.golf/help 2 
-whisper | word.golf 2 
-word | word.golf 4 
+adventur blue carbuncl | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+adventur blue | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+adventur engin | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+adventur sherlock holm | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 4 https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+adventur sherlock | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 4 https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+adventur speckl band | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+adventur speckl | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+adventur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 7 https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+alexand pope note | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+alexand pope releas | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+alexand pope | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 
+alexand | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 
+aloi bucklei author | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+aloi bucklei flaxman | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+aloi bucklei | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 
+aloi | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 
+annot theodor aloi | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+annot theodor | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+annot | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+anonym project gutenberg | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+anonym project | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+anonym | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+april languag english | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+april languag | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+april | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+art conceal artist | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+art conceal | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+art | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 2 
+arthur conan doyl | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 2 
+arthur conan | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 2 
+arthur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 2 
+artist art | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+artist creator beauti | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+artist creator | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+artist | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 2 
+author arthur conan | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+author arthur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+author homer translat | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+author homer | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+author oscar wild | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+author oscar | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+author | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+band ix adventur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+band ix | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+band | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+beauti reveal art | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+beauti reveal | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+beauti | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+blue carbuncl viii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+blue carbuncl | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+blue | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+bohemia red head | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+bohemia red | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+bohemia | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+book collect pictur | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+book collect | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+book txt adventur | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+book txt iliad | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+book txt | https://cs.brown.edu/courses/csci1380/sandbox/2 3 
+book | https://cs.brown.edu/courses/csci1380/sandbox/2 4 
+boscomb vallei mysteri | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+boscomb vallei | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+boscomb | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+bucklei author homer | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+bucklei author | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+bucklei flaxman | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+bucklei | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 
+carbuncl viii adventur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+carbuncl viii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+carbuncl | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+chapter chapter chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 2 
+chapter chapter iii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter chapter vii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter chapter xi | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 5 
+chapter iii chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter iii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter iv chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter iv | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter ix chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter ix | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter vii chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter vii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter viii chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter viii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xi chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xi | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xii chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xiii chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xiii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xiv chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xiv | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xix chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xix | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xv chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xv | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xvi chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xvi | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xvii chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xvii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xviii chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xviii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xx prefac | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter xx | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 20 
+check law countri | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+check law | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+check | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+collect pictur dorian | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+collect pictur | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+collect | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+conan doyl content | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+conan doyl releas | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+conan doyl | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 2 
+conan | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 2 
+conceal artist art | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+conceal artist | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+conceal | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+content prefac chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+content prefac | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+content scandal bohemia | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+content scandal | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+content | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+cost restrict whatsoev | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+cost restrict | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+cost | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+countri locat ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+countri locat | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+countri | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+creator beauti reveal | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+creator beauti | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+creator | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+credit anonym project | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+credit anonym | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+credit | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+dorian grai author | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+dorian grai ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+dorian grai oscar | https://cs.brown.edu/courses/csci1380/sandbox/2 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+dorian grai pictur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+dorian grai | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 4 https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+dorian | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 4 https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+doyl content scandal | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+doyl content | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+doyl releas march | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+doyl releas | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+doyl | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 2 
+ebook adventur sherlock | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 2 
+ebook adventur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 2 
+ebook iliad ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+ebook iliad iliad | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+ebook iliad | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 
+ebook onlin gutenberg | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+ebook onlin | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+ebook pictur dorian | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 2 
+ebook pictur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 2 
+ebook titl adventur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+ebook titl iliad | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+ebook titl pictur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+ebook titl | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+ebook unit cost | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+ebook unit | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+ebook updat april | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+ebook updat februari | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+ebook updat octob | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+ebook updat | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 6 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 6 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 6 
+engin | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+english credit anonym | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+english credit | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+english start project | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+english start | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+english | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+februari languag english | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+februari languag | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+februari | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+flaxman | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+grai author oscar | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+grai author | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+grai ebook unit | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+grai ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+grai oscar wild | https://cs.brown.edu/courses/csci1380/sandbox/2 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+grai oscar | https://cs.brown.edu/courses/csci1380/sandbox/2 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+grai pictur dorian | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+grai pictur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+grai | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 4 https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+gutenberg ebook adventur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 2 
+gutenberg ebook iliad | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 
+gutenberg ebook pictur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 2 
+gutenberg ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 2 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 2 
+gutenberg licens includ | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+gutenberg licens | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+gutenberg locat unit | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+gutenberg locat | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+gutenberg volunt jose | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+gutenberg volunt | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+gutenberg | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 5 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 4 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 4 
+head leagu iii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+head leagu | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+head | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+holm adventur sherlock | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+holm adventur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+holm arthur conan | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+holm arthur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+holm author arthur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+holm author | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+holm ebook unit | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+holm ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+holm static book | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+holm static | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+holm | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 4 https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+homer static book | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+homer static | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+homer translat alexand | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 
+homer translat | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 
+homer | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+ident iv boscomb | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+ident iv | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+ident | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+iii chapter iv | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+iii chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+iii ident iv | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+iii ident | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+iii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+iliad annot theodor | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+iliad annot | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+iliad ebook unit | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+iliad ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+iliad homer static | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+iliad homer translat | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+iliad homer | https://cs.brown.edu/courses/csci1380/sandbox/2 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+iliad iliad homer | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+iliad iliad | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+iliad | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 4 https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+includ ebook onlin | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+includ ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+includ | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+introduct rev theodor | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+introduct rev | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+introduct | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+iv boscomb vallei | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+iv boscomb | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+iv chapter chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+iv chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+iv | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+ix adventur engin | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+ix adventur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+ix chapter chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+ix chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+ix | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+jose menendez start | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+jose menendez | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+jose | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+juli ebook updat | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+juli ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+juli | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+languag english credit | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+languag english start | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+languag english | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+languag | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+law countri locat | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+law countri | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+law | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+leagu iii ident | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+leagu iii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+leagu | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+licens includ ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+licens includ | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+licens | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+lip vii adventur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+lip vii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+lip | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+locat ebook titl | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+locat ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+locat unit check | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+locat unit | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+locat | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 2 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 2 
+march ebook updat | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+march ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+march | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+menendez start project | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+menendez start | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+menendez | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+mysteri orang pip | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+mysteri orang | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+mysteri | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+note introduct rev | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+note introduct | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+note | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+octob ebook updat | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+octob ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+octob languag english | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+octob languag | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+octob | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+onlin gutenberg locat | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+onlin gutenberg | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+onlin | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+orang pip twist | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+orang pip | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+orang | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+oscar wild content | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+oscar wild releas | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+oscar wild static | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+oscar wild | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 2 https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+oscar | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 2 https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+pictur dorian grai | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 4 https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+pictur dorian | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 4 https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+pictur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 4 https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+pip twist lip | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+pip twist | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+pip | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+pope note introduct | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+pope note | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+pope releas juli | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+pope releas | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+pope | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 
+prefac artist creator | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+prefac artist | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+prefac chapter chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+prefac chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+prefac | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 2 
+project gutenberg ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 2 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 2 
+project gutenberg licens | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+project gutenberg volunt | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+project gutenberg | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 4 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 3 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 3 
+project | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 4 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 3 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 3 
+red head leagu | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+red head | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+red | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+releas juli ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+releas juli | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+releas march ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+releas march | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+releas octob ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+releas octob | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+releas | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+restrict whatsoev term | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+restrict whatsoev | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+restrict | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+rev theodor aloi | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+rev theodor | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+rev | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+reveal art conceal | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+reveal art | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+reveal | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+scandal bohemia red | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+scandal bohemia | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+scandal | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+sherlock holm adventur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+sherlock holm arthur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+sherlock holm author | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+sherlock holm ebook | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+sherlock holm static | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+sherlock holm | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 4 https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+sherlock | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 4 https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+speckl band ix | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+speckl band | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+speckl | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+start project gutenberg | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+start project | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+start | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+static book txt | https://cs.brown.edu/courses/csci1380/sandbox/2 3 
+static book | https://cs.brown.edu/courses/csci1380/sandbox/2 3 
+static | https://cs.brown.edu/courses/csci1380/sandbox/2 3 
+term project gutenberg | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+term project | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+term | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+theodor aloi bucklei | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 
+theodor aloi | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 
+theodor | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 
+titl adventur sherlock | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+titl adventur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+titl iliad annot | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+titl iliad | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+titl pictur dorian | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+titl pictur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+titl | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+translat alexand pope | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 
+translat alexand | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 
+translat | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 
+twist lip vii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+twist lip | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+twist | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+txt adventur sherlock | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+txt adventur | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+txt iliad homer | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+txt iliad | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+txt | https://cs.brown.edu/courses/csci1380/sandbox/2 3 
+unit check law | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+unit check | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+unit cost restrict | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+unit cost | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+unit | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 2 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 2 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 2 
+updat april languag | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+updat april | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 
+updat februari languag | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+updat februari | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+updat octob languag | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+updat octob | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+updat | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+vallei mysteri orang | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+vallei mysteri | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+vallei | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+vii adventur blue | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+vii adventur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+vii chapter viii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+vii chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+vii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+viii adventur speckl | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+viii adventur | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+viii chapter ix | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+viii chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+viii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+volunt jose menendez | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+volunt jose | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+volunt | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+whatsoev term project | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+whatsoev term | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+whatsoev | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book2.txt 1 https://cs.brown.edu/courses/csci1380/sandbox/2/static/book3.txt 1 
+wild content prefac | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+wild content | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+wild releas octob | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+wild releas | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+wild static book | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+wild static | https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+wild | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 2 https://cs.brown.edu/courses/csci1380/sandbox/2 1 
+xi chapter xii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xi chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xi | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xii chapter xiii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xii chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xiii chapter xiv | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xiii chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xiii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xiv chapter xv | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xiv chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xiv | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xix chapter xx | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xix chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xix | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xv chapter xvi | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xv chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xv | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xvi chapter xvii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xvi chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xvi | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xvii chapter xviii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xvii chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xvii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xviii chapter xix | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xviii chapter | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xviii | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xx prefac artist | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xx prefac | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 
+xx | https://cs.brown.edu/courses/csci1380/sandbox/2/static/book1.txt 1 

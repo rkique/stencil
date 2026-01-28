@@ -26,14 +26,14 @@ For example, `execSync(`echo "${input}" | ./c/process.sh`, {encoding: 'utf-8'});
 
 
 // const fs = require('fs');
-const {execSync} = require('child_process');
 // const path = require('path');
+const {execSync} = require('child_process');
 
 function query(indexFile, args) {
   const escaped = args.join(' ').replace(/'/g, `'\"'\"'`);
   const argsList = `'${escaped}'`;
   execSync(`grep "$(echo ${argsList}  \
-    | ./c/process.sh | ./c/stem.js | \
+    | ${__dirname}/c/process.sh | ${__dirname}/c/stem.js | \
      tr '\\r\\n' ' ')" ${indexFile}`, {encoding: 'utf-8', stdio: 'inherit'});
 }
 

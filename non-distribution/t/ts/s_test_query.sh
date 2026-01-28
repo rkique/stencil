@@ -3,18 +3,19 @@
 # Queries the d/d7.txt global index for the word 'right', 
 # and compares to the expected labels in ts/s_query.txt
 
-T_FOLDER=${T_FOLDER:-t}
+
+T_FOLDER=${T_FOLDER:-}
 R_FOLDER=${R_FOLDER:-}
 
 cd "$(dirname "$0")/..$R_FOLDER" || exit 1
 
 DIFF=${DIFF:-diff}
 
-term="right"
+term="stuff"
 
-cat "$T_FOLDER"/d/d7.txt > d/global-index.txt
+cat d/d7.txt > d/global-index.txt
 
-if $DIFF <(./query.js "$term") <(cat "$T_FOLDER"/d/s_query.txt) >&2;
+if $DIFF <(../query.js "$term") <(cat d/d8.txt) >&2;
 then
     echo "$0 success: search results are identical"
     exit 0

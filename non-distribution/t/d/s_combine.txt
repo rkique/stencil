@@ -1,6 +1,6 @@
-the
-quick
-brown
-the     quick
-quick   brown
-the     quick   brown
+    brown
+    quick
+    quick       brown
+    the
+    the quick
+    the quick   brown
