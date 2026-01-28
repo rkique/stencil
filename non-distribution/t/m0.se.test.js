@@ -1,10 +1,10 @@
 const execSync = require('child_process').execSync;
 const path = require('path');
 
-test('(9 pts) test student', () => {
-  const command = `"${path.join(__dirname, 'test-student-provided.sh')}"`;
-  execSync(command).toString().trim();
-});
+// test('(9 pts) test student', () => {
+//   const command = `"${path.join(__dirname, 'test-student-provided.sh')}"`;
+//   execSync(command).toString().trim();
+// });
 
 // test('(5 pts) lint', () => {
 //   const command = `"${path.join(__dirname, 'test-lint.sh')}"`;
@@ -70,3 +70,48 @@ test('(9 pts) test student', () => {
 //   const command = `"${path.join(__dirname, 'grade-sandbox-2.sh')}"`;
 //   execSync(command, {stdio: ['pipe', 'pipe', 'inherit']}).toString().trim();
 // });
+
+test('(5 pts) student-test-stem', () => {
+  const command = `"${path.join(__dirname, 'ts/s_test_stem.sh')}"`;
+  execSync(command).toString().trim();
+});
+
+test('(5 pts) student-test-query', () => {
+  const command = `"${path.join(__dirname, 'ts/s_test_query.sh')}"`;
+  execSync(command).toString().trim();
+});
+
+test('(5 pts) student-test-process', () => {
+  const command = `"${path.join(__dirname, 'ts/s_test_process.sh')}"`;
+  execSync(command).toString().trim();
+});
+
+test('(5 pts) student-test-merge', () => {
+  const command = `"${path.join(__dirname, 'ts/s_test_merge.sh')}"`;
+  execSync(command).toString().trim();
+});
+
+test('(5 pts) student-test-combine', () => {
+  const command = `"${path.join(__dirname, 'ts/s_test_combine.sh')}"`;
+  execSync(command).toString().trim();
+});
+
+test('(5 pts) student-test-invert', () => {
+  const command = `"${path.join(__dirname, 'ts/s_test_invert.sh')}"`;
+  execSync(command).toString().trim();
+});
+
+test('(5 pts) student-test-getURL', () => {
+  const command = `"${path.join(__dirname, 'ts/s_test_getURLs.sh')}"`;
+  execSync(command).toString().trim();
+});
+
+test('(5 pts) student-test-getText', () => {
+  const command = `"${path.join(__dirname, 'ts/s_test_getText.sh')}"`;
+  execSync(command).toString().trim();
+});
+
+test('(5 pts) student-test-end_to_end', () => {
+  const command = `"${path.join(__dirname, 'ts/s_test_end_to_end.sh')}"`;
+  execSync(command, {stdio: ['pipe', 'pipe', 'inherit']}).toString().trim();
+});

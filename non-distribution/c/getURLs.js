@@ -9,7 +9,7 @@ Usage: page.html > ./getURLs.js <base_url>
 
 const readline = require('readline');
 const {JSDOM} = require('jsdom');
-const {URL} = require('url');
+// const {URL} = require('url');
 
 // argv: [node exec, script, arg1, arg2, ...]
 let baseURL = process.argv[2];

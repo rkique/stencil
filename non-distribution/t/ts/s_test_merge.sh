@@ -12,20 +12,29 @@ DIFF_PERCENT=${DIFF_PERCENT:-0}
 
 cat /dev/null > d/global-index.txt
 
-files=("$T_FOLDER"/d/s_merge{1..2}.txt)
+files=(d/s_merge{1..2}.txt)
 
 for file in "${files[@]}"
 do
-    cat "$file" | c/merge.js d/global-index.txt > d/temp-global-index.txt
+    cat "$file" | ../c/merge.js d/global-index.txt > d/temp-global-index.txt
     mv d/temp-global-index.txt d/global-index.txt
 done
 
+EXPECTED="meanings | word.golf 1 word.golf/help 1
+neighbors | word.golf 4 word.golf/help 1
+shouting | word.golf 3 word.golf/help 2
+whisper | word.golf 2
+word | word.golf 4"
 
-if DIFF_PERCENT=$DIFF_PERCENT t/gi-diff.js <(sort d/global-index.txt) <(sort "$T_FOLDER"/d/s_merge3.txt) >&2;
+ACTUAL=$(cat d/global-index.txt | sed 's/[[:space:]]*$//')
+
+if [ "$EXPECTED" = "$ACTUAL" ];
 then
-    echo "$0 success: global indexes are identical"
+    echo "$0 success: global index contents are correct"
     exit 0
 else
-    echo "$0 failure: global indexes are not identical"
+    echo "$0 failure: global index contents do not match"
+    echo "$EXPECTED" >&2
+    echo "$ACTUAL" >&2
     exit 1
 fi

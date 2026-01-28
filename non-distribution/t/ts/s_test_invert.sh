@@ -19,3 +19,4 @@ then
 else
     echo "$0 failure: inverted indices are not identical"
     exit 1
+fi

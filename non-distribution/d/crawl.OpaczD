@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        a {
+            color: #5D4037;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        a:hover {
+            color: #FF5722;
+        }
+
+        .footer {
+            margin-top: 30px;
+            padding: 10px;
+            background-color: #3F51B5;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Interesting Fact 5</h1>
+        <p>  The Library of Congress in Washington, D.C., is not only the oldest federal cultural institution in the United States but also the largest library in the world in terms of the number of books and shelf space. It was established in 1800, making it an institution rich in history.
+
+        What makes it particularly fascinating is its immense collection: it holds more than 170 million items on approximately 838 miles of bookshelves. The collections include more than 39 million books and other printed materials in 470 languages, the rough draft of the Declaration of Independence, a Gutenberg Bible (one of only three perfect vellum copies known to exist), over 1.7 million recordings, and much more.
+
+        It's not just a library; it's a treasure trove of global knowledge and history. The Library of Congress adds approximately 12,000 items to its collections each day, emphasizing its ever-growing nature as a repository of human knowledge and creativity. The library serves as a resource not only for U.S. Congress and government agencies but also for researchers, scholars, and the general public worldwide.</p> 
+    </div>
+    <div class="footer">
+        <p>© 2023 CS1380. All rights reserved.</p>
+    </div>
+</body>
+</html>

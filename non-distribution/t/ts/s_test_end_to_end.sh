@@ -19,8 +19,11 @@ EOF
 
 cd "$(dirname "$0")/.." || exit 1
 
+# Create temp file for initial index
+echo "$INITIAL_GLOBAL_INDEX_FILE" > /tmp/initial_global_index.txt
+
 NEW_GLOBAL_INDEX_FILE="$(
-    echo "$LOCAL_INDEX_FILE" | ./c/merge.js <(echo "$INITIAL_GLOBAL_INDEX_FILE") | sort
+    echo "$LOCAL_INDEX_FILE" | ../c/merge.js /tmp/initial_global_index.txt | sort
 )"
 
 EXPECTED_GLOBAL_INDEX_FILE="$(
@@ -30,7 +33,7 @@ language | https://eric-xia.com 3 https://google.com 2
 EOF
 )"
 
-if DIFF_PERCENT=$DIFF_PERCENT ./t/gi-diff.js <(echo "$NEW_GLOBAL_INDEX_FILE") <(echo "$EXPECTED_GLOBAL_INDEX_FILE") >&2
+if DIFF_PERCENT=$DIFF_PERCENT node gi-diff.js <(echo "$NEW_GLOBAL_INDEX_FILE") <(echo "$EXPECTED_GLOBAL_INDEX_FILE") >&2
 then
     echo "$0 success: global indexes are identical"
     exit 0
