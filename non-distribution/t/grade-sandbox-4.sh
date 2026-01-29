@@ -6,7 +6,6 @@ cat /dev/null >d/visited.txt
 cat /dev/null >d/global-index.txt
 echo https://cs.brown.edu/courses/csci1380/sandbox/4 >d/urls.txt
 
-#./engine.sh
 ./engine_timed.sh
 
 ts=(
@@ -58,3 +57,14 @@ for v in "${vs[@]}"; do
         echo "$0 failure: $v not in visited urls"
     fi
 done
+
+elapsed_query_time=0
+for term in "${ts[@]}"; do
+    start_query_time=$(date +%s)
+    ./query.js "$term"
+    end_query_time=$(date +%s)
+    elapsed_query_time=$((elapsed_query_time + end_query_time - start_query_time))
+done
+
+echo "[grade-sandbox-4] total query time (s): $elapsed_query_time" >&2
+echo "[grade-sandbox-4] total queries: ${#ts[@]}))" >&2

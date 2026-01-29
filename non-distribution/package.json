@@ -37,8 +37,16 @@
         "ssd-gb": 460
       },
       "throughput": {
-        "dev": [],
-        "aws": [],
+        "dev": [{
+          "crawl-ps": 1.8,
+          "index-ps": 1.7,
+          "query-ps": 1.7
+        }],
+        "aws": [{
+          "crawl-ps": 0.4,
+          "index-ps": 0.4,
+          "query-ps": 2.5
+        }],
         "gs": []
       },
       "dloc": 2000,
