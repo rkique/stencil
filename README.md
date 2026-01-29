@@ -125,4 +125,37 @@ distribution.node.start(() => {
 
 # Results and Reflections
 
-> ...
+# M0: Setup & Centralized Computing
+* name: `Eric Xia`
+
+* email: `eric_xia@brown.edu`
+
+* cslogin: `exia3`
+
+## Summary
+
+> Summarize your implementation, including the most challenging aspects; remember to update the `report` section of the `package.json` file with the total number of hours it took you to complete M0 (`hours`), the total number of JavaScript lines you added, including tests (`jsloc`), the total number of shell lines you added, including for deployment and testing (`sloc`).
+
+My implementation consists of `7` components addressing T1--8. The most challenging aspect was implementing the additional tests. During the implementation, a slew of minor issues made many outputs to the console and error stream uninformative. The ultimate issues included distinguishing tabs and spaces within whitespace, relative and absolute file paths, and escaping quotes within shell commands. Within query.js, I also encountered a similar issue with interpreting the args parameter correctly. The solution employs a regex to escape single quotes, and subsequently wraps arguments within their own set of quotes.
+
+## Correctness & Performance Characterization
+
+> Describe how you characterized the correctness and performance of your implementation.
+
+To characterize correctness, I developed `9` tests which cover the following cases: 
+- s_getURLs.sh: extract links from alternative data source (personal website)
+- s_getText.sh: extract text from alternative data source (project description page)
+- s_test_process.sh: extract links from alternative content from html (personal website)
+- s_test_stem.sh: stems a list of common English words (rule-based, not morphologically sound)
+- s_test_combine.sh: tests bigram and trigram generation from a fixed set of words
+- s_test_invert.sh: tests inversion on a list generated from project page
+- s_test_merge.sh: tests merge combination of indices
+- s_test_end_to_end.sh: tests merge combination of local and global index
+
+*Performance*: The throughput of various subsystems is described in the `"throughput"` portion of package.json. The characteristics of my development machines are summarized in the `"dev"` portion of package.json.
+
+## Wild Guess
+
+> How many lines of code do you think it will take to build the fully distributed, scalable version of your search engine? Add that number to the `"dloc"` portion of package.json, and justify your answer below.
+
+I am guessing it will take 2000 lines of code to write a distributed version of the search engine, and make the current implementation scalable. I anticipate writing a small amount of code to optimize parallel operations among the current components, a larger amount of code around the current components to allow them to be called in unison, and a similarly large amount of code to communicate status to one another.

@@ -12,6 +12,7 @@ cat /dev/null >d/global-index.txt
 echo https://cs.brown.edu/courses/csci1380/sandbox/2 >d/urls.txt
 
 ./engine.sh
+#./engine_timed.sh
 
 ts=(
     "absenc"

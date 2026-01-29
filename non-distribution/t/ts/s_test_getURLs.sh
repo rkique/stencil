@@ -12,7 +12,7 @@ DIFF=${DIFF:-diff}
 
 url=""
 
-if ! $DIFF <(cat "$T_FOLDER"/d/s_getURLs1.txt | ../c/getURLs.js "$url" | sort) <(sort "$T_FOLDER"/d/s_getURLs2.txt) >&2;
+if ! $DIFF <(cat d/s_getURLs1.txt | ../c/getURLs.js "$url" | sort) <(sort d/s_getURLs2.txt) >&2;
 then
     echo "$0 failure: URL sets are not identical"
     exit 1

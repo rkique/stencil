@@ -12,7 +12,7 @@ DIFF=${DIFF:-diff}
 
 url="word.golf"
 
-if $DIFF <(cat "$T_FOLDER"/d/s_invert1.txt | ../c/invert.sh $url | sed 's/[[:space:]]//g' | sort) <(cat "$T_FOLDER"/d/s_invert2.txt | sed 's/[[:space:]]//g' | sort) >&2;
+if $DIFF <(cat d/s_invert1.txt | ../c/invert.sh $url | sed 's/[[:space:]]//g' | sort) <(cat d/s_invert2.txt | sed 's/[[:space:]]//g' | sort) >&2;
 then
     echo "$0 success: inverted indices are identical"
     exit 0
