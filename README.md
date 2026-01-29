@@ -152,7 +152,35 @@ To characterize correctness, I developed `9` tests which cover the following cas
 - s_test_merge.sh: tests merge combination of indices
 - s_test_end_to_end.sh: tests merge combination of local and global index
 
-*Performance*: The throughput of various subsystems is described in the `"throughput"` portion of package.json. The characteristics of my development machines are summarized in the `"dev"` portion of package.json.
+*Performance*: The throughput of various subsystems is described in the `"throughput"` portion of package.json. To characterize the throughput, a timed version of engine.sh was run on two diverse benchmarks: sandbox-2, a small collection of books with ~5 urls, and sandbox-4, a large web of quotes with ~200 urls. The average crawl, index, and query throughput was estimated by first dividing the total time for the crawl and index operations by the number of urls visited for each sandbox, and then averaging across both sandboxes.
+
+```
+Sandbox 2 - Dev (M1)
+crawl time: 4
+index time: 34
+crawl urls: 4
+query time: 3s, 5 queries
+
+Sandbox 4 - Dev (M1)
+crawl time: 85
+index time: 72
+crawl urls: 228
+query time: 3s, 5 queries
+
+Sandbox 2 - AWS t3.micro
+crawl time: 9
+index time: 11
+crawl urls: 4
+query time: 2 seconds, 5 queries
+
+Sandbox 4 - AWS t3.micro
+crawl time: 257
+index time: 164
+crawl urls: 228
+query time: 2 seconds, 5 queries
+```
+
+The characteristics of my development machines are summarized in the `"dev"` and `"aws"` of package.json. For the development, a M2 Macbook Air (16 GB RAM) was used. For deployment on the cloud, a t3.micro instance was used.
 
 ## Wild Guess
 

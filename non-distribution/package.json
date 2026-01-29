@@ -36,6 +36,11 @@
         "mem-gb": 16,
         "ssd-gb": 460
       },
+      "aws": {
+        "cpu-no": 2,
+        "mem-gb": 1,
+        "ssd-gb": 7
+      },
       "throughput": {
         "dev": [{
           "crawl-ps": 1.8,
@@ -43,8 +48,8 @@
           "query-ps": 1.7
         }],
         "aws": [{
-          "crawl-ps": 0.4,
-          "index-ps": 0.4,
+          "crawl-ps": 0.7,
+          "index-ps": 0.9,
           "query-ps": 2.5
         }],
         "gs": []
