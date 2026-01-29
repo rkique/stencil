@@ -9,7 +9,7 @@ const readline = require('readline');
 const {JSDOM} = require('jsdom');
 const {URL} = require('url');
 const fs = require('fs');
-const path = require('path')
+const path = require('path');
 
 let baseURL = process.argv[2];
 
@@ -22,11 +22,14 @@ if (baseURL.endsWith('index.html')) {
 const urlsFile = path.join(__dirname, '../d/urls.txt');
 const existingURLs = new Set();
 
-//read existing URLs from urls.txt
+// read existing URLs from urls.txt
 if (fs.existsSync(urlsFile)) {
   const fileContent = fs.readFileSync(urlsFile, 'utf-8');
-  fileContent.split('\n').forEach((line) => 
-    {if (line.trim()) {existingURLs.add(line.trim());}});
+  fileContent.split('\n').forEach((line) => {
+    if (line.trim()) {
+      existingURLs.add(line.trim());
+    }
+  });
 }
 
 const rl = readline.createInterface({
@@ -35,7 +38,7 @@ const rl = readline.createInterface({
 
 let html = '';
 rl.on('line', (line) => {
-  // 2. Read HTML input from standard input (stdin) 
+  // 2. Read HTML input from standard input (stdin)
   // line by line using the `readline` module.
   html += `${line}\n`;
 });
