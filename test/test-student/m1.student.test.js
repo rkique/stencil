@@ -5,33 +5,58 @@
 
     Imporant: Do not modify any of the test headers (i.e., the test('header', ...) part). Doing so will result in grading penalties.
 */
-
+const { performance } = require('perf_hooks');
 const distribution = require('../../distribution.js')();
 require('../helpers/sync-guard');
 
-test('(1 pts) student test', () => {
-  // Fill out this test case...
-    throw new Error('Not implemented');
-});
-
+const util = distribution.util;
 
 test('(1 pts) student test', () => {
-  // Fill out this test case...
-    throw new Error('Not implemented');
-});
+  let object = "klfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfald"
+  const start = performance.now()
+  const serialized = util.serialize(object);
+  const deserialized = util.deserialize(serialized);
+  const end = performance.now();
+  console.log(`[String S/DS] took ${end - start} milliseconds.`);
+  expect(deserialized).toEqual(object);
 
-
-test('(1 pts) student test', () => {
-  // Fill out this test case...
-    throw new Error('Not implemented');
 });
 
 test('(1 pts) student test', () => {
-  // Fill out this test case...
-    throw new Error('Not implemented');
+  let func = function() { return 42; };
+  const start = performance.now();
+  const serialized = util.serialize(func);
+  const deserialized = util.deserialize(serialized);
+  const end = performance.now();
+  console.log(`[Function S/DS] took ${end - start} milliseconds.`);
+  expect(typeof deserialized).toBe('function');
+
 });
 
 test('(1 pts) student test', () => {
-  // Fill out this test case...
-    throw new Error('Not implemented');
+  let object = {a: {b: {c: 3}}}
+  const serialized = util.serialize(object);
+  const deserialized = util.deserialize(serialized);
+  expect(deserialized).toEqual(object);
+});
+
+test('(1 pts) student test', () => {
+  let object = new Date("2024-01-01T00:00:00Z")
+  const start = performance.now();
+  const serialized = util.serialize(object);
+  const deserialized = util.deserialize(serialized);
+  const end = performance.now();
+  console.log(`[Date S/DS] took ${end - start} milliseconds.`);
+  expect(deserialized).toEqual(object);
+});
+
+test('(1 pts) student test', () => {
+//test error
+  let object = new Error("Test error message")
+  const start = performance.now();
+  const serialized = util.serialize(object);
+  const deserialized = util.deserialize(serialized);
+  const end = performance.now();
+  console.log(`[Error S/DS] took ${end - start} milliseconds.`);
+  expect(deserialized.message).toEqual(object.message);
 });
