@@ -41,6 +41,10 @@
         "ssd-gb": 7
       },
       "throughput": {
+        "dev": [],
+        "aws": []
+      },
+      "latency": {
         "dev": [{
           "serialize-string-ms": 0.11,
           "serialize-func-ms": 0.05,
@@ -48,14 +52,11 @@
           "serialize-error-ms": 2.23
         }],
         "aws": [{
+          "serialize-string-ms": 0.29,
           "serialize-func-ms": 0.12,
-          "serialize-date-ms": 0.05,
-          "serialize-error-ms": 2.18
+          "serialize-date-ms": 0.11,
+          "serialize-error-ms": 5.61
         }]
-      },
-      "latency": {
-        "dev": [],
-        "aws": []
       },
       "dloc": -99
     },
