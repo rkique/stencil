@@ -8,7 +8,7 @@ const { type } = require('os');
  * @returns {string}
  */
 function serialize(object) {
-  
+
   //Number, String, Boolean
   const primitives = ["number", "string", "boolean"]
 
@@ -24,13 +24,42 @@ function serialize(object) {
 
   //Handle function
   else if (typeof object === 'function') {
+    function extractFunctionParts(func) {
+      const funcStr = func.toString();
+      //arrow case
+      if (funcStr.includes('=>')) {
+        const arrowIndex = funcStr.indexOf('=>');
+        let paramsPart = funcStr.slice(0, arrowIndex).trim();
+        let bodyPart = funcStr.slice(arrowIndex + 2).trim();
+        paramsPart = paramsPart.replace(/^\(|\)$/g, '');
+        const args = paramsPart ? paramsPart.split(',').map(p => p.trim()) : [];
+        if (!bodyPart.startsWith('{')) {
+          bodyPart = `return ${bodyPart};`;
+        } else {
+          bodyPart = bodyPart.slice(1, -1).trim();
+        }
+        return { args, body: bodyPart };
+      } else {
+        // Regular function matching args.
+        const argsMatch = funcStr.match(/\(([^)]*)\)/);
+        const args = argsMatch && argsMatch[1]
+          ? argsMatch[1].split(',').map(arg => arg.trim()).filter(Boolean)
+          : [];
+        const bodyMatch = funcStr.match(/\{([\s\S]*)\}/);
+        const body = bodyMatch ? bodyMatch[1].trim() : '';
+        return { args, body };
+      }
+    }
+    // Usage in serialize:
+    const { args, body } = extractFunctionParts(object);
     const wrappedFunction = {
       type: "function",
-      value: object.toString()
-    }
+      args: args,
+      body: body
+    };
     return JSON.stringify(wrappedFunction);
   }
-  
+
   //Handle Error
   else if (object instanceof Error) {
     const errorProps = {};
@@ -101,41 +130,8 @@ function deserialize(string) {
   if (parsed == null) return null
   if (parsed.type == 'undefined') return undefined
   if (parsed.type == 'function') {
-    let argsString, body;
-    //use regex to identify argsString and body from main 
-    if (parsed.value.includes('function')) {
-      const functionMatch = parsed.value.match(/function\s*\(([^)]*)\)\s*\{([\s\S]*)\}\s*$/);
-      if (!functionMatch) {
-        throw new Error('Invalid function form during deserialization' + parsed.value);
-      }
-      argsString = functionMatch[1].trim();
-      body = functionMatch[2].trim()
-
-    } else if (parsed.value.includes('=>')) {
-      const arrowMatch = parsed.value.match(/^\s*\(([^)]*)\)\s*=>\s*([\s\S]+)$/);
-      if (arrowMatch) {
-        argsString = arrowMatch[1].trim();
-        const rawBody = arrowMatch[2].trim();
-        if (rawBody.startsWith('{') && rawBody.endsWith('}')) {
-          body = rawBody.slice(1, -1).trim();
-        } else {
-          body = `return ${rawBody}`;
-        }
-      } else {
-        const simpleArrowMatch = parsed.value.match(/^\s*(\w+)\s*=>\s*([\s\S]+)$/);
-        if (simpleArrowMatch) {
-          argsString = simpleArrowMatch[1].trim();
-          const rawBody = simpleArrowMatch[2].trim();
-          body = rawBody.startsWith('{') ? rawBody.slice(1, -1).trim() : `return ${rawBody}`;
-        } else {
-          throw new Error('Invalid arrow function format: ' + parsed.value);
-        }
-      }
-    } else {
-      throw new Error('Unsupported function format during deserialization: ' + parsed.value);
-    }
-    const args = argsString.length ? argsString.split(',').map(arg => arg.trim()) : [];
-    return new Function(...args, body);
+    const func = new Function(...parsed.args, parsed.body);
+    return func;
   }
   let serializedDict;
   switch (parsed.type) {
