@@ -187,3 +187,24 @@ The characteristics of my development machines are summarized in the `"dev"` and
 > How many lines of code do you think it will take to build the fully distributed, scalable version of your search engine? Add that number to the `"dloc"` portion of package.json, and justify your answer below.
 
 I am guessing it will take 2000 lines of code to write a distributed version of the search engine, and make the current implementation scalable. I anticipate writing a small amount of code to optimize parallel operations among the current components, a larger amount of code around the current components to allow them to be called in unison, and a similarly large amount of code to communicate status to one another.
+
+# M1: Serialization / Deserialization
+
+
+## Summary
+
+My implementation consists of a serialization and a deserialization funcion, and totals `150` lines of code. The basic implementation strategy is to break each type into a separate serialization and deserialization strategy, which often uses an internal string representation method.
+
+One major challenge faced was handling function object deserialization. The `toString` method simply describes the surface syntax, and requires careful handling to extract the function arguments and body. The function constructor was helpful for instantiating the reassembled function, yet understanding the correct pattern on the input was complicated. The intended implementation may have utilized a different serialization pattern. 
+
+Another major challenge involved serializing array objects. The reference implementation utilized an ordered dict as the value of the serialized object. In order to reestablish individual elements of the array, `Array.from` was employed. In combination with a recursive call on `serializedDict`, this allowed the deserialization of individual elements in order.
+
+For subtypes of Object such as Error, I utilized the builtin method `getOwnPropertyNames` to stringify each property. The subsequent deserialization utilized `Object.assign` to reestablish the method fields.
+
+The fallback serialization and deserialization assumes the input is an object.
+
+## Correctness & Performance Characterization
+
+*Correctness*: I wrote `5` tests, which took between 0.1 to 10 milliseconds to execute within my development environment, and between 2-10 times as long on the EC2 instance. This included tests for simple strings, functions, nested objects, and the date / error subclasses. Different function types were tested to ensure the function serialization worked as intended.
+
+*Performance*: The latency of various subsystems is described in the `"latency"` portion of package.json. The characteristics of my development machines are summarized in the `"dev"` portion of package.json.
