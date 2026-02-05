@@ -10,7 +10,8 @@ const distribution = require('../../distribution.js')();
 require('../helpers/sync-guard');
 
 const util = distribution.util;
-
+//disable console.log here
+console.log = () => {};
 test('(1 pts) student test', () => {
   let object = "klfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfaldklfasjdlkfjalsdkjfFJKDDsdsfald"
   const start = performance.now()
