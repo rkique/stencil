@@ -232,7 +232,7 @@ I struggled with understanding where the callback function for send should be ca
 
 To characterize correctness of the module, both provided and student tests were run. I wrote 5 tests, one for each of `status.get`, `routes.get`, `routes.put`, `routes.rem`, and `comm.send`. Each test examined unique functionality of the associated component. Altogether, the tests take 1 second to execute.
 
-*Performance*: I characterized the performance of the comm functionality by sending 1000 service requests in a tight loop. Average throughput and latency is recorded in `package.json`.
+*Performance*: I characterized the performance of the comm functionality by sending 1000 service requests in a tight loop, averaged over five separate runs. This was performed for both the development machine and the remote machine. Average throughput is recorded in `package.json`.
 
 
 ## Key Feature
