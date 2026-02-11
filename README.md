@@ -232,9 +232,17 @@ I struggled with understanding where the callback function for send should be ca
 
 To characterize correctness of the module, both provided and student tests were run. I wrote 5 tests, one for each of `status.get`, `routes.get`, `routes.put`, `routes.rem`, and `comm.send`. Each test examined unique functionality of the associated component. Altogether, the tests take 1 second to execute.
 
-*Performance*: I characterized the performance of the comm functionality by sending 1000 service requests in a tight loop, averaged over five separate runs. This was performed for both the development machine and the remote machine. Average throughput is recorded in `package.json`.
+*Performance*: I characterized the performance of the comm functionality by sending 1000 service requests in a tight loop, averaged over five separate runs. The test was performed for both the development machine and the remote machine. Average throughput is recorded in `package.json`.
 
 
 ## Key Feature
 
 > How would you explain the implementation of `createRPC` to someone who has no background in computer science — i.e., with the minimum jargon possible?
+
+createRPC gives one computer the ability to call functions on other computers, working with that computer's data and setup. This is useful when you want to compute something really fast, or when you want to access private resources. 
+
+To make a sort of "linked copy" of a remote function on your own computer, you would want to first call createRPC on that function from the remote computer. Then you send the resulting function over the network to your computer. 
+
+What createRPC does to the function is add steps in between the processing of arguments and the return value. It has to convert the arguments to text, so that they can be sent along with the function to the remote computer, call the function on the remote node. 
+
+Then, it has to convert the result to text which can be sent back to your own computer, and make it seem like the function on your computer produced it.

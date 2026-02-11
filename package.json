@@ -80,7 +80,7 @@
       },
       "latency": {
         "dev-comm-send": [0.29],
-        "aws-comm-send": []
+        "aws-comm-send": [1.56]
       },
       "dloc": -99
     },
