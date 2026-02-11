@@ -136,14 +136,13 @@ test('(0 pts) local.routes.rem returns removed service', (done) => {
 
 test('(3 pts) comm: routes.get()', (done) => {
   const remote = {node: config, service: 'routes', method: 'get'};
-  const message = [
-    'status',
-  ];
+  const message = ['status'];
   distribution.node.start((e) => {
     if (e) {
       done(e);
       return;
     }
+    //send message to the routes service on this node to get the status service.
     local.comm.send(message, remote, (e, v) => {
       try {
         expect(e).toBeFalsy();

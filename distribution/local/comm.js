@@ -5,6 +5,7 @@
  */
 
 const http = require('node:http');
+const util = require("../util/util.js");
 
 /**
  * @typedef {Object} Target
@@ -21,7 +22,44 @@ const http = require('node:http');
  * @returns {void}
  */
 function send(message, remote, callback) {
-  return callback(new Error('comm.send not implemented'));
+  //add default callback to avoid unhandled errors
+  callback = callback || function() {};
+  if (!remote.node || !remote.node.ip || !remote.node.port) {
+    return callback(new Error(`Invalid remote node configuration: ${JSON.stringify(remote.node)}`), null);
+  }
+  if (!Array.isArray(message)) {
+    message = [message];
+  }
+  const options = {
+    method: 'PUT',
+    hostname: remote.node.ip,
+    port: remote.node.port,
+    path: `/${remote.gid || 'local'}/${remote.service}/${remote.method}`,
+    headers: {'Content-Type': 'application/json'}
+  };
+  const req = http.request(options, (res) => {
+    let data = []; // Use array for safer buffer concatenation
+    res.on('data', (chunk) => { data.push(chunk); });
+    
+    res.on('end', () => {
+      globalThis.distribution.node.counts++;
+      try {
+        const buffer = Buffer.concat(data);
+        const result = util.deserialize(buffer.toString());
+        callback(null, result);
+      } catch (error) {
+        callback(error);
+      }
+    });
+  });
+  
+  req.on('error', (error) => {
+    console.log(`[comm.send] error: ${error}`);
+    callback(error);});
+
+  req.write(util.serialize(message))
+  req.end()
 }
+
 
 module.exports = {send};

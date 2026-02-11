@@ -208,3 +208,33 @@ The fallback serialization and deserialization assumes the input is an object.
 *Correctness*: I wrote `5` tests, which took between 0.1 to 10 milliseconds to execute within my development environment, and between 2-10 times as long on the EC2 instance. This included tests for simple strings, functions, nested objects, and the date / error subclasses. Different function types were tested to ensure the function serialization worked as intended.
 
 *Performance*: The latency of various subsystems is described in the `"latency"` portion of package.json. The characteristics of my development machines are summarized in the `"dev"` portion of package.json.
+
+# M2: Actors and Remote Procedure Calls (RPC)
+
+## Summary
+
+The implementation of the distribution.js module was done in three parts. On average, the lines of code written matched the expected lines on the milestone document, with the exception of `routes` which took 20-30 lines more. The most difficult tests to debug had to do with the `node.js` http request and `comm.send`, as it was necessary to track data in multiple places.
+
+The first part involved writing control logic for `status.get`. These retrieved properties for the current node from `distribution.node.config`, and were for the most part straightforward. The second part involved implementing a map for the routes on a node to service objects. The put and rem methods were made much simpler by settling on a single data structure to handle the routes within `get`.  In the third and final part, I implemented `comm.send`, which sent message contents within an PUT http request. 
+
+
+My implementation comprises 3 software components, totaling 150 lines of code. 
+
+Initializing counts within `node.js` was somewhat confusing, as I misunderstood how module imports work.
+
+Within the body of `routes.get`, there were several edge cases involving missing defaults. In addition, implementing the `routes` call within `routes.get` was confusing due to the circular dependency.
+
+I struggled with understanding where the callback function for send should be called. Ultimately, the logical place was to have it called with the deserialized response, thus reflecting the remote node function execution correctlyu.
+
+
+## Correctness & Performance Characterization
+
+
+To characterize correctness of the module, both provided and student tests were run. I wrote 5 tests, one for each of `status.get`, `routes.get`, `routes.put`, `routes.rem`, and `comm.send`. Each test examined unique functionality of the associated component. Altogether, the tests take 1 second to execute.
+
+*Performance*: I characterized the performance of the comm functionality by sending 1000 service requests in a tight loop. Average throughput and latency is recorded in `package.json`.
+
+
+## Key Feature
+
+> How would you explain the implementation of `createRPC` to someone who has no background in computer science — i.e., with the minimum jargon possible?

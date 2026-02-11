@@ -8,6 +8,10 @@ const url = require('node:url');
 const log = require('../util/log.js');
 
 const yargs = require('yargs/yargs');
+const util = require("../util/util.js");
+
+// Initialize node-level counters early so they're available before start().
+const counts = 0;
 
 /**
  * @returns {Node}
@@ -61,19 +65,18 @@ function setNodeConfig() {
   // Default values for config
   maybeIp = maybeIp ?? '127.0.0.1';
   maybePort = maybePort ?? 1234;
-
   return {
     ip: maybeIp,
     port: maybePort,
     onStart: maybeOnStart,
   };
 }
+
 /*
     The start function will be called to start your node.
     It will take a callback as an argument.
     After your node has booted, you should call the callback.
 */
-
 
 /**
  * @param {(err?: Error | null) => void} callback
@@ -82,18 +85,26 @@ function setNodeConfig() {
 function start(callback) {
   const server = http.createServer((req, res) => {
     /* Your server will be listening for PUT requests. */
-
-    // Write some code...
-
-
+    if (req.method !== 'PUT') {
+      res.statusCode = 405; // Method Not Allowed
+      res.end(util.serialize(new Error('Only PUT requests are allowed')));
+      return;
+    }
     /*
       The path of the http request will determine the service to be used.
       The url will have the form: http://node_ip:node_port/service/method
     */
-
-    // Write some code...
-
-
+    const parsedUrl = url.parse(req.url, true);
+    //split the path into parts and get the service and method
+    const pathParts = parsedUrl.pathname.split('/').filter(part => part.length > 0);
+    if (pathParts.length < 2) {
+      res.statusCode = 400; // Bad Request
+      res.end('Invalid URL format. Expected /service/method');
+      return;
+    }
+  
+    const serviceName = pathParts[1];
+    const methodName = pathParts[2];
     /*
       A common pattern in handling HTTP requests in Node.js is to have a
       subroutine that collects all the data chunks belonging to the same
@@ -107,28 +118,38 @@ function start(callback) {
 
       Our nodes expect data in JSON format.
     */
-
-    // Write some code...
-
     /** @type {any[]} */
     const body = [];
-
     req.on('data', (chunk) => {
+      body.push(chunk);
     });
-
+    
     req.on('end', () => {
-
-      /*
-        Here, you can handle the service requests.
-        Use the local routes service to get the service you need to call.
-        You need to call the service with the method and arguments provided in the request.
-        Then, you need to serialize the result and send it back to the caller.
-      */
-
-      // Write some code...
-
+      const bodyStr = Buffer.concat(body).toString();
+      let args = util.deserialize(bodyStr);
+      //use local routes service with serviceName
+      globalThis.distribution.local.routes.get(serviceName, (e, service) => {
+      if (e || !service) {res.statusCode = 404; res.end(`Service ${serviceName} not found`); return;}
+      const method = service[methodName];
+      if (!method) {
+        res.statusCode = 404; 
+        res.end(JSON.stringify(`Method ${methodName} not found in service ${serviceName}`));
+        return;
+      }
+      //serialize result and send back to caller
+      method(...args, (error, result) => {
+        if (error) {res.statusCode = 500; 
+          res.end(JSON.stringify(`Error: ${error.message}`));
+          return
+        }
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.end(util.serialize(result));
+      });
+    });
     });
   });
+  
 
   /*
     Your server will be listening on the port and ip specified in the config
@@ -152,6 +173,6 @@ function start(callback) {
   });
 
   server.listen(config.port, config.ip);
-}
+  }
 
-module.exports = {start, config: setNodeConfig()};
+module.exports = {start, config: setNodeConfig(), counts};

@@ -11,6 +11,12 @@ store    A persistent key/value store               get, put, del, append
 
 */
 
+//comm
+//mem
+//routes
+//status
+//groups: can use collections of nodes as single node.
+
 /* Status Service */
 
 const status = require('./status.js');

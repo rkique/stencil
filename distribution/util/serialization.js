@@ -18,10 +18,10 @@ const id = (() => {
 
 let nativeFuncs = {
   '0': global.console.log, 
-  '1': global.require('fs').readFile, 
-  '2': global.require('os').type, 
-  '3': global.require('fs').readFileSync, 
-  '4': global.require('path').join
+  '1': require('fs').readFile, 
+  '2': require('os').type, 
+  '3': require('fs').readFileSync, 
+  '4': require('path').join
 }
 
 function serializeWithUEID(object, seenSet) {
