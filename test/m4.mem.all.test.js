@@ -284,6 +284,25 @@ test('(3 pts) all.mem.put(no key)', (done) => {
 });
 
 
+test('(0 pts) putting to all.mem does not affect different groups', (done) => {
+  const key = 'samekey';
+  const a = {a: 1};
+  const b = {b: 2};
+
+  distribution.mygroup.mem.put(a, key, (e, v) => {
+    if (e) return done(e);
+    distribution.mygroup.mem.put(b, {key, gid: 'othergid'}, (e, v) => {
+      if (e) return done(e);
+      distribution.mygroup.mem.get(key, (e, v) => {
+        if (e) return done(e);
+        expect(v).toEqual(a);
+        done();
+      });
+    });
+  });
+});
+
+
 /*
   Testing infrastructure code.
 */
