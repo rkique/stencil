@@ -24,13 +24,9 @@ function groups(config) {
    * @param {Object.<string, Node>} group
    * @param {Callback} callback
    */
-  //put should update 
   function put(config, group, callback) {
-    //specify who the message is sent to.
     let send = distribution[context.gid].comm.send;
     let msg = [config, group];
-    console.log(`all.group.put gid is ${context.gid}`)
-    console.log(`[all.groups.put] config: ${JSON.stringify(config)}, group: ${JSON.stringify(group)}`);
     let remote = {service: 'groups', method: 'put'}
     send(msg, remote, callback);
   }

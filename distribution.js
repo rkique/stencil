@@ -29,7 +29,7 @@ function bootstrap(config) {
 
   const {setup} = require('./distribution/all/all.js');
   distribution.all = setup({gid: 'all'});
-
+  distribution.all.nodes = {};
   /* Overrides when missing functionality from previous milestone or extra credit is needed */
 
   // __start_M3_solution__

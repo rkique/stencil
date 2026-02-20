@@ -95,7 +95,6 @@ function start(callback) {
       The url will have the form: http://node_ip:node_port/service/method
     */
     const parsedUrl = url.parse(req.url, true);
-    //split the path into parts and get the service and method
     const pathParts = parsedUrl.pathname.split('/').filter(part => part.length > 0);
     if (pathParts.length < 2) {
       res.statusCode = 400; // Bad Request

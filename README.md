@@ -246,3 +246,35 @@ To make a sort of "linked copy" of a remote function on your own computer, you w
 What createRPC does to the function is add steps in between the processing of arguments and the return value. It has to convert the arguments to text, so that they can be sent along with the function to the remote computer, call the function on the remote node. 
 
 Then, it has to convert the result to text which can be sent back to your own computer, and make it seem like the function on your computer produced it.
+
+# M3: Node Groups & Gossip Protocols
+
+## Summary
+
+The implementation relies on two core components: the groups abstraction, and `all.comm` to enable distributed communication between nodes. To enable the groups abstraction for individual views, `local.groups` was written to add, remove, and update node maps for individual views. This way, each method under `groups` enumerates id-configuration maps, which allow specification of addressees within the `comm` interface.
+
+Supporting code in `local.comm`, `local.routes`, and `local/node.js` was necessary to allow sending messages by groups. 
+
+Next, the `all.comm` method was implemented, which sequentially communicated with all nodes within a particular node's group view. Once the total number of responses were received, errors and responses were returned as two objects. This provided a basis for implementing the other distributed methods, `status.js`, `groups.js`, `routes.js`, all of which rely on fanning out to individual nodes within a group.  
+
+My implementation comprises `8` new software components, totaling `450` added lines of code over the previous implementation. Around 150 lines of code were added to the testing file. The tests involved setting up a node spawning and stopping procedure, and calling various distributed services on active nodes.
+
+I encountered several issues with the imported distribution library and the test infrastructure. In particular, the jest framework would often hang even with fairly minimal test setups. Eventually, I resolved the issues by carefully choosing imports from distributionLib. These did not override any of the intended components from the distributed services or groups, but rather allowed the server start and spawn to function as expected.
+
+Another challenge faced was understanding how to setup distributed services within the local groups call. Even though I understood conceptually the service-as-closure idea, I didn't connect it to the groupServices for individual properties of distribution. After going to hours, I was pointed to the setup function in all.js.
+
+Once I understood the groups abstraction, implementing syntax for using the communication service was much easier, and the rest of the implementation went smoothly.
+
+## Correctness & Performxzance Characterization
+
+> Describe how you characterized the correctness and performance of your implementation
+
+
+*Correctness* -- I wrote 5 tests, including som with multiple intermediate setup steps. These tests covered varied areas from my own implementation. This included local groups, all.comm.send, status.get, groups.put, and routes.get. I also created many smaller tests throughout to understand constructors and intended implementation. These small tests included use of the `log` uility, in addition to `util.inspectObject` for differentiating student and reference implementations. 
+
+*Performance* -- spawn times (all students) and gossip (lab/ec-only).
+
+
+## Key Feature
+
+> What is the point of having a gossip protocol? Why doesn't a node just send the message to _all_ other nodes in its group?

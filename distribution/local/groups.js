@@ -7,18 +7,20 @@
 
 const { id } = require("../util/util.js");
 
+
+const nodeConfig = distribution.node.config;
+const sid = id.getSID(nodeConfig);
   
+
 /**
  * @param {string} name
  * @param {Callback} callback
  */
-//TODO: modify
 function get(name, callback) {
   //default callback 
   if (typeof callback !== 'function') {
     callback = function () { };
   }
-  //console.log(`[local.groups.get] name: ${name}`);
   if (name === 'all') {
       let nodes = {};
       //for now just add local here
@@ -61,7 +63,7 @@ function get(name, callback) {
     }
 
     distribution[config.gid].nodes = group;
-    // Use all.js setup to create group-scoped service instances
+
     const allSetup = require('../all/all.js').setup;
     const groupServices = allSetup(config);
     for (let service in groupServices) {
@@ -75,10 +77,8 @@ function get(name, callback) {
    * @param {string} name
    * @param {Callback} callback
    */
-  //delete group with name
   function del(name, callback) {
 
-    //default callback 
     if (typeof callback !== 'function') {
       callback = function () { };
     }
@@ -114,7 +114,6 @@ function get(name, callback) {
    * @param {string} node
    * @param {Callback} callback
    */
-  //Node is SID, not node object
   function rem(name, node, callback) {
     //default callback 
     if (typeof callback !== 'function') {
