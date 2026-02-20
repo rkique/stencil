@@ -32,14 +32,14 @@ function bootstrap(config) {
 
   /* Overrides when missing functionality from previous milestone or extra credit is needed */
 
-  /* __start_M3_solution__
+  // __start_M3_solution__
   distribution.util.wire.createRPC = distributionLib.util.wire.createRPC;
   distribution.local.routes = distributionLib.local.routes;
   distribution.local.status.spawn = distributionLib.local.status.spawn;
   distribution.local.status.stop = distributionLib.local.status.stop;
   distribution.local.comm = distributionLib.local.comm;
   distribution.node.start = distributionLib.node.start;
-  __end_M3_solution__ */
+  // __end_M3_solution__
 
   for (const [key, service] of Object.entries(distribution.local)) {
     distribution.local.routes.put(service, key, () => {});
@@ -60,20 +60,26 @@ const {useLibrary} = require('./package.json');
 // @ts-ignore Optional dependency for reference implementation.
 const distribution = useLibrary ? require('@brown-ds/distribution') : bootstrap;
 
-/* The following code is run when distribution.js is invoked directly */
 if (require.main === module) {
   globalThis.distribution = distribution();
-  globalThis.distribution.node.start(globalThis.distribution.node.config.onStart || (() => {
-    // Start REPL for interactive use
-    const repl = require('node:repl');
-    repl.start({
-      prompt: `${globalThis.distribution.util.id.getSID(globalThis.distribution.node.config)}> `,
-      input: process.stdin,
-      output: process.stdout,
-      terminal: true,
-      useGlobal: true,
-    });
-  }));
+  globalThis.distribution.node.start(globalThis.distribution.node.config.onStart || (() => {}));
+
 }
+
+/* The following code is run when distribution.js is invoked directly */
+// if (require.main === module) {
+//   globalThis.distribution = distribution();
+//   globalThis.distribution.node.start(globalThis.distribution.node.config.onStart || (() => {
+//     // Start REPL for interactive use
+//     const repl = require('node:repl');
+//     repl.start({
+//       prompt: `${globalThis.distribution.util.id.getSID(globalThis.distribution.node.config)}> `,
+//       input: process.stdin,
+//       output: process.stdout,
+//       terminal: true,
+//       useGlobal: true,
+//     });
+//   }));
+// }
 
 module.exports = distribution;

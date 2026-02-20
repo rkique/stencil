@@ -5,7 +5,9 @@
  * @typedef {import("../types.js").Node} Node
  */
 
+const { id } = require("../util/util.js");
 
+  
 /**
  * @param {string} name
  * @param {Callback} callback
@@ -131,4 +133,4 @@ function get(name, callback) {
     }
   };
 
-  return {get, put, del, add, rem};
+  module.exports = { get, put, del, add, rem };
