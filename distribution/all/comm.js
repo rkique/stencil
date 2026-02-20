@@ -29,12 +29,15 @@ function comm(config) {
    * @param {Callback} callback
    */
   function send(message, configuration, callback) {
+    //send will get the nodes in the local context
+    //console.log(`[all.comm.send] context gid is ${context.gid}`)
     distribution.local.groups.get(context.gid, (e, nodes) => {
       if (e) {
         return callback(e);
       }
-
+      // console.log('nodes in group: ' + Object.keys(nodes));
       const nodeIds = Object.keys(nodes);
+
       if (nodeIds.length === 0) {
         return callback(null, {});
       }
@@ -42,16 +45,13 @@ function comm(config) {
       let responsesReceived = 0;
       const responses = {};
       const errors = {};
-
       nodeIds.forEach((nodeId) => {
         const node = nodes[nodeId];
         const remoteConfig = {
           service: configuration.service,
           method: configuration.method,
-          gid: context.gid,
           node: node
         };
-
         distribution.local.comm.send(message, remoteConfig, (err, val) => {
           responsesReceived++;
           if (err) {
@@ -59,10 +59,8 @@ function comm(config) {
           } else {
             responses[nodeId] = val;
           }
-
           if (responsesReceived === nodeIds.length) {
-            const finalErrors = Object.keys(errors).length > 0 ? errors : {};
-            return callback(finalErrors, responses);
+            return callback(errors, responses);
           }
         });
       });

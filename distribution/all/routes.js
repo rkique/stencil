@@ -21,16 +21,24 @@ function routes(config) {
    * @param {string} name
    * @param {Callback} callback
    */
+  //put a service on each local name
   function put(service, name, callback) {
-    return callback(new Error('routes.put not implemented'));
+    let send = distribution[context.gid].comm.send;
+    let msg = [service, name];
+    let remote = {service: 'routes', method: 'put'}
+    send(msg, remote, callback);
   }
 
   /**
    * @param {string} configuration
    * @param {Callback} callback
    */
+  //put a service on each local name.
   function rem(configuration, callback) {
-    return callback(new Error('routes.rem not implemented'));
+    let send = distribution[context.gid].comm.send;
+    let msg = [configuration];
+    let remote = {service: 'routes', method: 'rem'}
+    send(msg, remote, callback);
   }
 
   return {put, rem};

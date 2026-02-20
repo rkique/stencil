@@ -39,6 +39,9 @@ function bootstrap(config) {
   distribution.local.status.stop = distributionLib.local.status.stop;
   distribution.local.comm = distributionLib.local.comm;
   distribution.node.start = distributionLib.node.start;
+  distribution.node = distributionLib.node;
+  distribution.util = distributionLib.util;
+
   // __end_M3_solution__
 
   for (const [key, service] of Object.entries(distribution.local)) {

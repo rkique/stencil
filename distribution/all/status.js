@@ -22,8 +22,25 @@ function status(config) {
    * @param {string} configuration
    * @param {Callback} callback
    */
+  //the issue is that we need to combine outputs in a reasonable manner
   function get(configuration, callback) {
-    
+    console.log(`attempted to call [all.status.get] with configuration: ${configuration} and gid ${context.gid}`);
+    //for each case, we will simply call distribution.gid.comm.send with the appropriate service, method,
+    let send = distribution[context.gid].comm.send;
+    let msg = [configuration];
+    let remote = { service: 'status', method: 'get' }
+    console.log('[all.status.get]received configuration: ' + configuration);
+    send(msg, remote, (e, v) => {
+      if (configuration == 'heapTotal' || configuration == 'heapUsed') {
+        const total = Object.values(v).reduce((sum, val) => sum + val, 0);
+        return callback(e, total)
+      }
+      if (configuration === 'counts') {
+        const total = Object.values(v).reduce((sum, val) => sum + val, 0);
+        return callback(e, total);
+      }
+      return callback(e, v);
+    })
   }
 
   /**
@@ -41,7 +58,7 @@ function status(config) {
     callback(new Error('status.stop not implemented')); // If you won't implement this, check the skip.sh script.
   }
 
-  return {get, stop, spawn};
+  return { get, stop, spawn };
 }
 
 module.exports = status;

@@ -18,7 +18,7 @@ function get(name, callback) {
   if (typeof callback !== 'function') {
     callback = function () { };
   }
-
+  //console.log(`[local.groups.get] name: ${name}`);
   if (name === 'all') {
       let nodes = {};
       //for now just add local here
@@ -33,9 +33,11 @@ function get(name, callback) {
       }
       return callback(null, nodes);
     }
+
     if (!distribution[name]) {
       return callback(new Error(`[local.groups] Group ${name} does not exist`))
     }
+
     return callback(null, distribution[name].nodes || {});
   }
 
@@ -45,7 +47,6 @@ function get(name, callback) {
    * @param {Callback} callback
    */
   function put(config, group, callback) {
-    console.log('[put] is called')
     if (typeof callback !== 'function') {
       callback = function () { };
     }
@@ -56,13 +57,10 @@ function get(name, callback) {
 
     //distribution.local
     if (!distribution[config.gid]) {
-      console.log(`[local.groups.put] creating new group: ${config.gid}`);
       distribution[config.gid] = {};
     }
 
     distribution[config.gid].nodes = group;
-    console.log(`[local.groups.put] group ${config.gid} set with nodes: ${JSON.stringify(group)}`);
-    
     // Use all.js setup to create group-scoped service instances
     const allSetup = require('../all/all.js').setup;
     const groupServices = allSetup(config);

@@ -55,6 +55,7 @@ function get(configuration, callback) {
  * @returns {void}
  */
 function put(service, configuration, callback) {
+  console.log(`[all.routes.put] service: ${JSON.stringify(service)}, configuration: ${configuration}`);
   services.set(configuration, service)
   callback(null, service);
 }

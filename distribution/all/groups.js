@@ -24,8 +24,15 @@ function groups(config) {
    * @param {Object.<string, Node>} group
    * @param {Callback} callback
    */
+  //put should update 
   function put(config, group, callback) {
-    return callback(new Error('groups.put not implemented'));
+    //specify who the message is sent to.
+    let send = distribution[context.gid].comm.send;
+    let msg = [config, group];
+    console.log(`all.group.put gid is ${context.gid}`)
+    console.log(`[all.groups.put] config: ${JSON.stringify(config)}, group: ${JSON.stringify(group)}`);
+    let remote = {service: 'groups', method: 'put'}
+    send(msg, remote, callback);
   }
 
   /**
@@ -33,7 +40,10 @@ function groups(config) {
    * @param {Callback} callback
    */
   function del(name, callback) {
-    return callback(new Error('groups.del not implemented'));
+    let send = distribution[context.gid].comm.send;
+    let msg = [name];
+    let remote = {service: 'groups', method: 'del'}
+    send(msg, remote, callback);
   }
 
   /**
@@ -41,7 +51,10 @@ function groups(config) {
    * @param {Callback} callback
    */
   function get(name, callback) {
-    return callback(new Error('groups.get not implemented'));
+    let send = distribution[context.gid].comm.send;
+    let msg = [name];
+    let remote = {service: 'groups', method: 'get'}
+    send(msg, remote, callback);
   }
 
   /**
@@ -50,7 +63,10 @@ function groups(config) {
    * @param {Callback} callback
    */
   function add(name, node, callback) {
-    return callback(new Error('groups.add not implemented'));
+    let send = distribution[context.gid].comm.send;
+    let msg = [name, node];
+    let remote = {service: 'groups', method: 'add'}
+    send(msg, remote, callback);
   }
 
   /**
@@ -59,7 +75,10 @@ function groups(config) {
    * @param {Callback} callback
    */
   function rem(name, node, callback) {
-    return callback(new Error('groups.rem not implemented'));
+    let send = distribution[context.gid].comm.send;
+    let msg = [name, node];
+    let remote = {service: 'groups', method: 'rem'}
+    send(msg, remote, callback);
   }
 
   return {
