@@ -7,7 +7,6 @@ jest.spyOn(process, 'exit').mockImplementation((n) => { });
 
 test('(2 pts) all.status.get(nid)', (done) => {
   const nids = Object.values(mygroupGroup).map((node) => id.getNID(node));
-  console.log('[nids] ' + nids);
   distribution.mygroup.status.get('nid', (e, v) => {
     try {
       expect(e).toEqual({});

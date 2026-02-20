@@ -30,16 +30,13 @@ function comm(config) {
    */
   function send(message, configuration, callback) {
     //send will get the nodes in the local context
-    //console.log(`[all.comm.send] context gid is ${context.gid}`)
     distribution.local.groups.get(context.gid, (e, nodes) => {
       if (e) {
         return callback(e);
       }
-      // console.log('nodes in group: ' + Object.keys(nodes));
       const nodeIds = Object.keys(nodes);
-
       if (nodeIds.length === 0) {
-        return callback(null, {});
+        return callback(new Error('No nodes in group'));
       }
 
       let responsesReceived = 0;

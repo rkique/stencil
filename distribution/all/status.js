@@ -24,12 +24,12 @@ function status(config) {
    */
   //the issue is that we need to combine outputs in a reasonable manner
   function get(configuration, callback) {
-    console.log(`attempted to call [all.status.get] with configuration: ${configuration} and gid ${context.gid}`);
+    //console.log(`attempted to call [all.status.get] with configuration: ${configuration} and gid ${context.gid}`);
     //for each case, we will simply call distribution.gid.comm.send with the appropriate service, method,
     let send = distribution[context.gid].comm.send;
     let msg = [configuration];
     let remote = { service: 'status', method: 'get' }
-    console.log('[all.status.get]received configuration: ' + configuration);
+    //console.log('[all.status.get]received configuration: ' + configuration);
     send(msg, remote, (e, v) => {
       if (configuration == 'heapTotal' || configuration == 'heapUsed') {
         const total = Object.values(v).reduce((sum, val) => sum + val, 0);
