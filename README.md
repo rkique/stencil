@@ -278,3 +278,5 @@ Once I understood the groups abstraction, implementing syntax for using the comm
 ## Key Feature
 
 > What is the point of having a gossip protocol? Why doesn't a node just send the message to _all  in its group?
+
+Implementing gossip allows messages to propagate quickly and with a lighter load for each node involved. This is particularly important in developing large systems in which nodes be under geographical constraints, or where partitions might exist between nodes. With gossip protocols, as long as each node implements the correct procedure, nodes will converge to the same eventual value for any particular message.
