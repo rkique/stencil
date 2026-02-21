@@ -75,33 +75,33 @@
         "ssd-gb": 7
       },
       "throughput": {
-        "dev": [],
-        "aws": []
+        "dev-comm-send-ps": [3448],
+        "aws-comm-send-ps": [641]
       },
       "latency": {
-        "dev-comm-send": [0.29],
-        "aws-comm-send": [1.56]
+        "dev-comm-send-ms": [0.29],
+        "aws-comm-send-ms": [1.56]
       },
-      "dloc": -99
+      "dloc": 100
     },
     {
       "milestone": "M3",
-      "hours": 999,
-      "loc": 999,
+      "hours": 18,
+      "loc": 450,
       "dev": {
-        "cpu-no": 999,
-        "mem-gb": 999,
-        "ssd-gb": 999
+        "cpu-no": 8,
+        "mem-gb": 16,
+        "ssd-gb": 460
       },
       "throughput": {
-        "dev": [],
-        "aws": []
+        "dev-spawn-ps": [9.43],
+        "aws-spawn-ps": [7.52]
       },
       "latency": {
-        "dev": [],
-        "aws": []
+        "dev-spawn-ms": [106],
+        "aws-spawn-ms": [133]
       },
-      "dloc": -99
+      "dloc": 150
     },
     {
       "milestone": "M4",
