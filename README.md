@@ -277,4 +277,4 @@ Once I understood the groups abstraction, implementing syntax for using the comm
 
 ## Key Feature
 
-> What is the point of having a gossip protocol? Why doesn't a node just send the message to _all_ other nodes in its group?
+> What is the point of having a gossip protocol? Why doesn't a node just send the message to _all  in its group?

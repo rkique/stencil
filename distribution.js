@@ -3,8 +3,6 @@
  * @typedef {import("./distribution/types.js").Node} Node
  */
 
-const log = require('./distribution/util/log.js');
-
 /**
  * @param {Node} [config]
  */
@@ -41,6 +39,8 @@ function bootstrap(config) {
   distribution.node.start = distributionLib.node.start;
   distribution.node = distributionLib.node;
   distribution.util = distributionLib.util;
+  // distribution.util.deserialize = distributionLib.util.deserialize;
+  // distribution.util.serialize = distributionLib.util.serialize;
 
   // __end_M3_solution__
 

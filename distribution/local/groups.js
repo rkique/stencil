@@ -5,11 +5,9 @@
  * @typedef {import("../types.js").Node} Node
  */
 
-const { id } = require("../util/util.js");
-
-
+let distribution = globalThis.distribution;
 const nodeConfig = distribution.node.config;
-const sid = id.getSID(nodeConfig);
+const sid = distribution.util.id.getSID(nodeConfig);
   
 
 /**
@@ -25,7 +23,7 @@ function get(name, callback) {
       let nodes = {};
       //for now just add local here
       let localConfig = distribution.node.config
-      nodes[id.getSID(localConfig)] = localConfig;
+      nodes[distribution.util.id.getSID(localConfig)] = localConfig;
       for (let key in distribution) {
         if (distribution[key] && distribution[key].nodes) {
           for (let gid in distribution[key].nodes) {
@@ -102,7 +100,7 @@ function get(name, callback) {
     }
     if (distribution[name]) {
       const group = distribution[name].nodes;
-      group[id.getSID(node)] = node;
+      group[distribution.util.id.getSID(node)] = node;
       return callback(null, group);
     } else {
       return callback(new Error(`[add] group ${name} not found`));

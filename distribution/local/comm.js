@@ -5,7 +5,6 @@
  */
 
 const http = require('node:http');
-const util = require("../util/util.js");
 
 /**
  * @typedef {Object} Target
@@ -13,7 +12,7 @@ const util = require("../util/util.js");
  * @property {string} method
  * @property {Node} node
  * @property {string} [gid]
- */
+ */ 
 
 /**
  * @param {Array<any>} message
@@ -26,6 +25,9 @@ function send(message, remote, callback) {
   callback = callback || function() {};
   if (!remote.node || !remote.node.ip || !remote.node.port) {
     return callback(new Error(`Invalid remote node configuration: ${JSON.stringify(remote.node)}`), null);
+  }
+  if (!remote.service || !remote.method) {
+    return callback(new Error(`Invalid remote target configuration: ${JSON.stringify(remote)}`), null);
   }
   if (!Array.isArray(message)) {
     message = [message];
@@ -45,7 +47,10 @@ function send(message, remote, callback) {
       globalThis.distribution.node.counts++;
       try {
         const buffer = Buffer.concat(data);
-        const result = util.deserialize(buffer.toString());
+        const result = globalThis.distribution.util.deserialize(buffer.toString());
+        if (Array.isArray(result) && result.length === 2) {
+          return callback(result[0], result[1]);
+        }
         callback(null, result);
       } catch (error) {
         callback(error);
@@ -57,7 +62,7 @@ function send(message, remote, callback) {
     console.log(`[comm.send] error: ${error}`);
     callback(error);});
 
-  req.write(util.serialize(message))
+  req.write(globalThis.distribution.util.serialize(message))
   req.end()
 }
 

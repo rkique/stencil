@@ -8,7 +8,8 @@ const url = require('node:url');
 const log = require('../util/log.js');
 
 const yargs = require('yargs/yargs');
-const util = require("../util/util.js");
+
+const distributionLib = require('@brown-ds/distribution');
 
 // Initialize node-level counters early so they're available before start().
 const counts = 0;
@@ -41,7 +42,7 @@ function setNodeConfig() {
   if (typeof args.config === 'string') {
     let config = undefined;
     try {
-      config = globalThis.distribution.util.deserialize(args.config);
+      config = distributionLib.util.deserialize(args.config);
     } catch (error) {
       try {
         config = JSON.parse(args.config);
@@ -84,10 +85,15 @@ function setNodeConfig() {
  */
 function start(callback) {
   const server = http.createServer((req, res) => {
+    const respond = (statusCode, error, value) => {
+      res.statusCode = statusCode;
+      res.setHeader('Content-Type', 'application/json');
+      res.end(util.serialize([error || null, value ?? null]));
+    };
+
     /* Your server will be listening for PUT requests. */
     if (req.method !== 'PUT') {
-      res.statusCode = 405; // Method Not Allowed
-      res.end(util.serialize(new Error('Only PUT requests are allowed')));
+      respond(405, new Error('Only PUT requests are allowed'), null);
       return;
     }
     /*
@@ -96,9 +102,8 @@ function start(callback) {
     */
     const parsedUrl = url.parse(req.url, true);
     const pathParts = parsedUrl.pathname.split('/').filter(part => part.length > 0);
-    if (pathParts.length < 2) {
-      res.statusCode = 400; // Bad Request
-      res.end('Invalid URL format. Expected /service/method');
+    if (pathParts.length < 3) {
+      respond(400, new Error('Invalid URL format. Expected /gid/service/method'), null);
       return;
     }
   
@@ -125,26 +130,41 @@ function start(callback) {
     
     req.on('end', () => {
       const bodyStr = Buffer.concat(body).toString();
-      let args = util.deserialize(bodyStr);
+      let args;
+      try {
+        args = distributionLib.util.deserialize(bodyStr);
+      } catch (error) {
+        respond(400, error, null);
+        return;
+      }
+
+      if (!Array.isArray(args)) {
+        args = [args];
+      }
+
       //use local routes service with serviceName
       globalThis.distribution.local.routes.get(serviceName, (e, service) => {
-      if (e || !service) {res.statusCode = 404; res.end(`Service ${serviceName} not found`); return;}
+      if (e || !service) {
+        respond(404, e || new Error(`Service ${serviceName} not found`), null);
+        return;
+      }
       const method = service[methodName];
       if (!method) {
-        res.statusCode = 404; 
-        res.end(JSON.stringify(`Method ${methodName} not found in service ${serviceName}`));
+        respond(404, new Error(`Method ${methodName} not found in service ${serviceName}`), null);
         return;
       }
       //serialize result and send back to caller
-      method(...args, (error, result) => {
-        if (error) {res.statusCode = 500; 
-          res.end(JSON.stringify(`Error: ${error.message}`));
-          return
-        }
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'application/json');
-        res.end(util.serialize(result));
-      });
+      try {
+        method(...args, (error, result) => {
+          if (error) {
+            respond(500, error, null);
+            return;
+          }
+          respond(200, null, result);
+        });
+      } catch (error) {
+        respond(500, error, null);
+      }
     });
     });
   });
