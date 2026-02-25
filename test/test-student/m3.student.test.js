@@ -229,80 +229,80 @@ afterAll((done) => {
 });
 
 
-// //check all SID values for mygroup via comm.send
-// test('(1 pts) student test', (done) => {
-//   const sids = Object.values(mygroupGroup).map((node) => id.getSID(node));
-//   const remote = {service: 'status', method: 'get'};
-//   distribution.mygroup.comm.send(['sid'], remote, (e, v) => {
-//     try {
-//       expect(e).toEqual({});
-//       expect(Object.values(v).length).toEqual(sids.length);
-//       console.log('values of v:', Object.values(v));
-//       expect(Object.values(v)).toEqual(expect.arrayContaining(sids));
-//       done();
-//     } catch (error) {
-//       done(error);
-//     }
-//   });
-// });
+//check all SID values for mygroup via comm.send
+test('(1 pts) student test', (done) => {
+  const sids = Object.values(mygroupGroup).map((node) => id.getSID(node));
+  const remote = {service: 'status', method: 'get'};
+  distribution.mygroup.comm.send(['sid'], remote, (e, v) => {
+    try {
+      expect(e).toEqual({});
+      expect(Object.values(v).length).toEqual(sids.length);
+      console.log('values of v:', Object.values(v));
+      expect(Object.values(v)).toEqual(expect.arrayContaining(sids));
+      done();
+    } catch (error) {
+      done(error);
+    }
+  });
+});
 
-// //no godot status returned from any node
-// test('(1 pts) student test', (done) => {
-//   distribution.mygroup.status.get('godot', (e, v) => {
-//       try {
-//         Object.keys(mygroupGroup).forEach((sid) => {
-//           expect(e[sid]).toBeDefined();
-//           expect(e[sid]).toBeInstanceOf(Error);
-//         });
-//         expect(v).toEqual({});
-//         done();
-//       } catch (error) {
-//         done(error);
-//       }
-//     });
-// });
+//no godot status returned from any node
+test('(1 pts) student test', (done) => {
+  distribution.mygroup.status.get('godot', (e, v) => {
+      try {
+        Object.keys(mygroupGroup).forEach((sid) => {
+          expect(e[sid]).toBeDefined();
+          expect(e[sid]).toBeInstanceOf(Error);
+        });
+        expect(v).toEqual({});
+        done();
+      } catch (error) {
+        done(error);
+      }
+    });
+});
 
-// const group4Group = {};
-// group4Group[id.getSID(n1)] = n1;
-// group4Group[id.getSID(n3)] = n3;
+const group4Group = {};
+group4Group[id.getSID(n1)] = n1;
+group4Group[id.getSID(n3)] = n3;
 
-// //Put g into browncs for all members of group4
-// test('(1 pts) student test', (done) => {
-//   const g = {
-//     '507aa': {ip: '127.0.0.1', port: 8080},
-//     '14ab0': {ip: '127.0.0.1', port: 8081},
-//   };
-//   distribution.group4.groups.put('browncs', g, (e,v) => {
-//     try {
-//       expect(e).toEqual({});
-//       Object.keys(group4Group).forEach((sid) => {
-//         expect(v[sid]).toEqual(g);
-//       });
-//       done();
-//     } catch (error) {
-//       done(error);
-//     }
-//   });
-// });
+//Put g into browncs for all members of group4
+test('(1 pts) student test', (done) => {
+  const g = {
+    '507aa': {ip: '127.0.0.1', port: 8080},
+    '14ab0': {ip: '127.0.0.1', port: 8081},
+  };
+  distribution.group4.groups.put('browncs', g, (e,v) => {
+    try {
+      expect(e).toEqual({});
+      Object.keys(group4Group).forEach((sid) => {
+        expect(v[sid]).toEqual(g);
+      });
+      done();
+    } catch (error) {
+      done(error);
+    }
+  });
+});
 
-// //check that all.routes.put sends appropriate f to each node
-// test('(1 pts) student test', (done) => {
-//   const pingService = {};
+//check that all.routes.put sends appropriate f to each node
+test('(1 pts) student test', (done) => {
+  const pingService = {};
 
-//   pingService.ping = () => {
-//     return 'ping!'
-//   };
+  pingService.ping = () => {
+    return 'ping!'
+  };
 
-//   distribution.mygroup.routes.put(pingService, 'ping', () => {
-//       const req = {node: n3, service: 'routes', method: 'get'}
-//       distribution.local.comm.send(['ping'], req, (e,v) => {
-//         try {
-//           expect(e).toBeFalsy();
-//           expect(v.ping()).toEqual('ping!')
-//           done()
-//         } catch(error){
-//           done(error);
-//         }
-//       })
-//   })
-// });
+  distribution.mygroup.routes.put(pingService, 'ping', () => {
+      const req = {node: n3, service: 'routes', method: 'get'}
+      distribution.local.comm.send(['ping'], req, (e,v) => {
+        try {
+          expect(e).toBeFalsy();
+          expect(v.ping()).toEqual('ping!')
+          done()
+        } catch(error){
+          done(error);
+        }
+      })
+  })
+});

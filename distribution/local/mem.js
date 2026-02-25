@@ -10,13 +10,24 @@
  */
 
 
+const util = require('../util/util.js');
+
+let mem = {};
+
 /**
  * @param {any} state
  * @param {SimpleConfig} configuration
  * @param {Callback} callback
  */
 function put(state, configuration, callback) {
-  return callback(new Error('mem.put not implemented'));
+  if (configuration == null){
+    configuration = util.id.getID(state);
+  }
+  if (state == null){
+    return callback(new Error('state cannot be null'));
+  }
+  mem[configuration] = state;
+  callback(null, configuration);
 };
 
 /**
@@ -33,7 +44,10 @@ function append(state, configuration, callback) {
  * @param {Callback} callback
  */
 function get(configuration, callback) {
-  return callback(new Error('mem.get not implemented'));
+  if (mem[configuration] == null) {
+    return callback(new Error('mem.get not found'));
+  }
+  callback(null, mem[configuration]);
 }
 
 /**
@@ -41,7 +55,8 @@ function get(configuration, callback) {
  * @param {Callback} callback
  */
 function del(configuration, callback) {
-  return callback(new Error('mem.del not implemented'));
+  delete mem[configuration];
+  callback(null, configuration);
 };
 
 module.exports = {put, get, del, append};
