@@ -130,6 +130,8 @@ test('(1 pts) all.mem.put(no key)', (done) => {
   });
 });
 
+// all.mem.put()/local.comm.send(mem.get())
+
 test(
     '(1 pts) all.mem.put()/local.comm.send(mem.get())',
     (done) => {

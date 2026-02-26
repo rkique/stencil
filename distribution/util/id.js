@@ -64,6 +64,7 @@ function idToNum(id) {
 }
 
 /** @type { Hasher } */
+//Given a key identifier and node ids (could be nodes), choose the NID at the modulo of KID 
 const naiveHash = (kid, nids) => {
   const sortedNids = [...nids].sort();
   const index = Number(idToNum(kid) % BigInt(sortedNids.length));

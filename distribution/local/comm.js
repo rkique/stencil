@@ -14,6 +14,7 @@ const http = require('node:http');
  * @property {string} [gid]
  */ 
 
+
 /**
  * @param {Array<any>} message
  * @param {Target} remote
@@ -32,6 +33,7 @@ function send(message, remote, callback) {
   if (!Array.isArray(message)) {
     message = [message];
   }
+  console.log(`[comm.local.send] message is ${JSON.stringify(message)}`)
   const options = {
     method: 'PUT',
     hostname: remote.node.ip,

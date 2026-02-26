@@ -115,13 +115,16 @@ test('(5 pts) (scenario) use mem.reconf', (done) => {
   distribution.local.groups.put(config, mygroupGroup, (e, v) => {
     // Now, place each one of the items you made inside the group...
     distribution.mygroup.mem.put(keysAndItems[0].item, keysAndItems[0].key, (e, v) => {
+      distribution.mygroup.mem.put(keysAndItems[1].item, keysAndItems[1].key, (e, v) => {
+        distribution.mygroup.mem.put(keysAndItems[2].item, keysAndItems[2].key, (e, v) => {
+          // Now, remove a node from the group and call `mem.reconf` to place the items in the remaining nodes...
         // We need to pass a copy of the group's
         // nodes before the changes to reconf()
         const groupCopy = {...mygroupGroup};
  
-        // Remove a node from the group...
+        // remove n1 from mygroup on local view. Then, call 'mygroup' for reconf on distributed?
         let toRemove = util.id.getSID(n1);
-        distribution.mygroup.groups.rem(
+        distribution.local.groups.rem(
             'mygroup',
             toRemove,
             (e, v) => {
@@ -131,6 +134,8 @@ test('(5 pts) (scenario) use mem.reconf', (done) => {
                 checkPlacement();
               });
             });
+          })
+        })
     });
   });
 
@@ -210,7 +215,7 @@ test('(5 pts) (scenario) redistribute keys and values among nodes', (done) => {
       const entries = Object.entries(data);
       let pending = entries.length;
       if (pending === 0) return callback();
-
+      //store each entry on distribution.local, via local.store.put.
       entries.forEach(([k, v]) => {
         const remote = {node: node, service: 'store', method: 'put'};
         const config = {key: k, gid: 'local'};
@@ -222,7 +227,7 @@ test('(5 pts) (scenario) redistribute keys and values among nodes', (done) => {
       });
     };
 
-    // Seed n1 and n2, then run solution
+    // Seed: n1 has ['jcarb', 'lc'] in store and n2 has ['jcarb']
     seed(n1, n1Data, () => {
       seed(n2, n2Data, () => {
         runSolution();
@@ -234,7 +239,33 @@ test('(5 pts) (scenario) redistribute keys and values among nodes', (done) => {
     // Helper to process a single node's data
     const processNode = (node, dataToProcess, callback) => {
       const entries = Object.entries(dataToProcess);
+      let pending = entries.length;
+      if (pending === 0) return callback();
+      //Examine entries and fetch local values.
+      entries.forEach(([k]) => {
+        //fetch local values
+        const remote = {node: node, service: 'store', method: 'get'};
+        const config = {key: k, gid: 'local'};
+        //For entry in entries, access the local value for the key across nodes.
+        distribution.local.comm.send([config], remote, (e, localValue) => {
+          if (e) {
+            return callback(e);
+          }
+          console.log(`appending ${localValue} for key ${k} from node ${node.port}`);
+          //accumulates values under same key across nodes.
+          distribution.shuffleGroup.store.append(localValue, k, (e) => {
+            if (e) {
+              return callback(e);
+            }
+            if (--pending === 0) {
+              return callback();
+            }
+          });
+        });
+      });
     };
+
+      
 
     // Process n1's data, then n2's data, and finlly check the results
     processNode(n1, n1Data, () => {
@@ -250,11 +281,13 @@ test('(5 pts) (scenario) redistribute keys and values among nodes', (done) => {
       try {
         expect(e).toBeFalsy();
         // What do you expect the value to be?
-
+        expect(v).toEqual(expect.arrayContaining(['one', 'two']));
+        // console.log('found jcarb aggregation')
         // Check 'lc' aggregation
         distribution.shuffleGroup.store.get('lc', (e, v) => {
           expect(e).toBeFalsy();
-          // What do you expect the value to be?
+          expect(v).toEqual(expect.arrayContaining(['three']));
+          // console.log('found lc aggregation')
           done();
         });
       } catch (error) {

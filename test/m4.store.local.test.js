@@ -15,8 +15,7 @@ test('(1 pts) local.store.get(jcarb)', (done) => {
     } catch (error) {
       done(error);
     }
-  });
-});
+  })});
 
 test('(1 pts) local.store.del(jcarb)', (done) => {
   const key = 'jcarbsd';
