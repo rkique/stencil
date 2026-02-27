@@ -32,9 +32,13 @@ function store(config) {
    */
   function get(configuration, callback) {
     //get the key from the configuration
+    console.log(`[store.get] using id for config: ${JSON.stringify(configuration)}`)
     const kid = distribution.util.id.getID(configuration);
 
-    //get the nodes in the local context
+    configuration = { key: configuration, gid: context.gid };
+
+    console.log(`[all.store.get] configuration set as ${JSON.stringify(configuration)}`)
+    //get the nodes from invocation context
     distribution.local.groups.get(context.gid, (e, nodes) => {
 
       if (e) return callback(e);
@@ -58,10 +62,16 @@ function store(config) {
    */
   function put(state, configuration, callback) {
     //allow null config for id
+    let kid;
     if (configuration == null) {
-      configuration = util.id.getID(state);
-    }
-    const kid = distribution.util.id.getID(configuration);
+      kid = distribution.util.id.getID(state);
+      configuration = {key: kid, gid: context.gid};
+    } else {
+      kid = distribution.util.id.getID(configuration.key);
+      configuration = { key: kid, gid: context.gid } }
+
+    console.log(`[all.store.put] configuration set as ${JSON.stringify(configuration)}`)
+    //get nodes from invocation context
     distribution.local.groups.get(context.gid, (e, nodes) => {
 
       if (e) return callback(e);
@@ -73,10 +83,10 @@ function store(config) {
       if (!node) {
         return callback(new Error(`Node ${nodeID} not found in group ${context.gid}`));
       }
-
+      //console.log(`[all.store.put] we are using configuration ${JSON.stringify(configuration)}`)
       let remote = { node: node, service: 'store', method: 'put' };
       let message = [state, configuration];
-      console.log(`[all.store.put] sending store.put kv pair ${configuration}:${state} to node ${node}`);
+      //console.log(`[all.store.put] sending store.put kv pair ${configuration}:${JSON.stringify(state)} to node ${JSON.stringify(node)}`);
       return distribution.local.comm.send(message, remote, callback);
     });
   }

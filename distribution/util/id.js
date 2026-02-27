@@ -73,10 +73,33 @@ const naiveHash = (kid, nids) => {
 
 /** @type { Hasher } */
 const consistentHash = (kid, nids) => {
+  const kidNum = idToNum(kid);
+  const nidNums = nids.map(nid => idToNum(nid));
+  const sortedNidNums = [...nidNums].sort((a, b) => a > b ? 1 : -1);
+
+  let index = sortedNidNums.findIndex(nidNum => nidNum >= kidNum);
+  if (index === -1) index = 0;
+
+  return nids[nidNums.indexOf(sortedNidNums[index])];
+  
 };
 
 /** @type { Hasher } */
 const rendezvousHash = (kid, nids) => {
+  let mergedList = []
+
+  nids.forEach((nid) => mergedList.push(kid + nid))
+  mergedList.forEach((element, i) => {
+    mergedList[i] = idToNum(getID(element))
+  })
+
+  const maxIndex = mergedList.reduce((mi, cv, ci, arr) => {
+    if (cv > arr[mi]) return ci;
+    else return mi;
+  }, 0);
+
+  return nids[maxIndex];
+
 };
 
 module.exports = {

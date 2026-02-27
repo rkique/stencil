@@ -39,7 +39,11 @@ function mem(config) {
    */
   function get(configuration, callback) {
 
-    const kid = distribution.util.id.getID(configuration);
+    if (typeof configuration == "string"){
+      configuration = { key: configuration, gid: context.gid };
+    }
+
+    const kid = distribution.util.id.getID(configuration.key);
 
     distribution.local.groups.get(context.gid, (e, nodes) => {
 
@@ -47,7 +51,7 @@ function mem(config) {
       const nids = Object.keys(nodes);
       const nodeID = context.hash(kid, nids);
       const node = nodes[nodeID];
-
+      
       if (!node) {
         return callback(new Error(`Node ${nodeID} not found in group ${context.gid}`));
       }
@@ -64,11 +68,16 @@ function mem(config) {
    * @param {Callback} callback
    */
   function put(state, configuration, callback) {
-    //allow null config for id
+
     if (configuration == null) {
       configuration = util.id.getID(state);
     }
-    const kid = distribution.util.id.getID(configuration);
+
+    if (typeof configuration == "string"){
+      configuration = { key: configuration, gid: context.gid };
+    }
+
+    const kid = distribution.util.id.getID(configuration.key);
     distribution.local.groups.get(context.gid, (e, nodes) => {
 
       if (e) return callback(e);
@@ -91,9 +100,12 @@ function mem(config) {
    * @param {Callback} callback
    */
   function del(configuration, callback) {
-    //hash kid to identify node to delete from
-    let kid = distribution.util.id.getID(configuration);
-    //we want to return an Error here. 
+    if (typeof configuration == "string"){
+      configuration = { key: configuration, gid: context.gid };
+      console.log(`[del] setting config to ${JSON.stringify(configuration)}`)
+    }
+
+    let kid = distribution.util.id.getID(configuration.key);
     distribution.local.groups.get(context.gid, (e, nodes) => {
 
       if (e) return callback(e);

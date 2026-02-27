@@ -13,6 +13,26 @@
 const util = require('../util/util.js');
 const { config } = require("./node.js");
 
+/**
+ * @param {SimpleConfig} configuration
+ * @returns {string | null}
+ */
+function normalizeConfig(configuration, state) {
+
+  if (configuration == null && state) {
+    return util.id.getID(state);
+  }
+
+  //use standard format
+  if (typeof configuration === 'object') {
+    if (!configuration.key || !configuration.gid) {
+      console.log(`[store.normalizeConfig] warning: configuration object ${JSON.stringify(configuration)} missing key or gid`);
+    }
+    return `${configuration.key}.${configuration.gid}`
+  }
+  return String(configuration);
+}
+
 //mem is a store for the local node
 let mem = {};
 
@@ -22,17 +42,13 @@ let mem = {};
  * @param {Callback} callback
  */
 function put(state, configuration, callback) {
-  if (typeof configuration == 'object') {
-    configuration = `${configuration.key}.${configuration.gid}`;
-  }
-  if (configuration == null){
-    configuration = util.id.getID(state);
-  }
+  let key = normalizeConfig(configuration, state);
+  console.log(`[mem.put] putting value with key ${key}`);
   if (state == null){
     return callback(new Error('state cannot be null'));
   }
-  //console.log(`[mem.put] putting value with key ${configuration} and state ${state} in mem`);
-  mem[configuration] = state;
+  //console.log(`[mem.put] putting value with key ${key} and state ${state} in mem`);
+  mem[key] = state;
   callback(null, state);
 };
 
@@ -50,16 +66,13 @@ function append(state, configuration, callback) {
  * @param {Callback} callback
  */
 function get(configuration, callback) {
-
-  if (typeof configuration == 'object') {
-      //support gid-based retrieval
-    //configuration = `${configuration.key}.${configuration.gid}`;
-    configuration = configuration.key;
-  }
-  if (mem[configuration] == null) {
+  let key = normalizeConfig(configuration);
+  console.log(`[mem.get] getting value with key ${key}`);
+  console.log(``);
+  if (mem[key] == null) {
     return callback(new Error(`mem.get for ${JSON.stringify(configuration)} not found`));
   }
-  callback(null, mem[configuration]);
+  callback(null, mem[key]);
 }
 
 /**
@@ -68,14 +81,12 @@ function get(configuration, callback) {
  */
 function del(configuration, callback) {
   //if configuration is not found, return error
-  if (typeof configuration == 'object') {
-    configuration = `${configuration.key}.${configuration.gid}`;
-  }
-  if (mem[configuration] == null) {
+  let key = normalizeConfig(configuration);
+  if (mem[key] == null) {
     return callback(new Error(`mem.del for ${JSON.stringify(configuration)} not found`));
   }
-  const state = mem[configuration];
-  delete mem[configuration];
+  const state = mem[key];
+  delete mem[key];
   callback(null, state);
 };
 

@@ -10,35 +10,41 @@ const distribution = require('../../distribution.js')();
 const id = distribution.util.id;
 require('../helpers/sync-guard');
 
-//test local mem and local store
+// test local mem and local store
 test('(1 pts) student test', (done) => {
-  const fish = {fins: 2, name: 'Fliggins'}
-  const key = 'fl1g'
-  distribution.local.mem.put(fish, key, (e, v) => {
-    distribution.local.mem.del(key, (e, v) => {
+  const fish = {fins: 2, name: 'Fliggins'};
+  const key = 'fl1g';
+
+  distribution.local.mem.put(fish, key, (e) => {
+    if (e) return done(e);
+
+    distribution.local.mem.del(key, (e) => {
+      if (e) return done(e);
+
       distribution.local.mem.get(key, (e, v) => {
         try {
           expect(e).toBeInstanceOf(Error);
           expect(v).toBeFalsy();
-          done();
         } catch (error) {
-          done(error);
+          return done(error);
         }
-      });
-    });
-    distribution.local.store.put(fish, key, (e, v) => {
-        distribution.local.store.get(key, (e, v) => {
-          try {
-            expect(e).toBeFalsy();
-            expect(v).toEqual(fish);
-            done();
-          } catch (error) {
-            done(error);
-          }
+
+        distribution.local.store.put(fish, key, (e) => {
+          if (e) return done(e);
+
+          distribution.local.store.get(key, (e, v) => {
+            try {
+              expect(e).toBeFalsy();
+              expect(v).toEqual(fish);
+              done();
+            } catch (error) {
+              done(error);
+            }
+          });
         });
       });
+    });
   });
-
 });
 
 //test distributed store

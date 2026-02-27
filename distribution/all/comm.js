@@ -29,7 +29,7 @@ function comm(config) {
    * @param {Callback} callback
    */
   function send(message, configuration, callback) {
-    console.log(`[all.comm.send] message: ${JSON.stringify(message)}, configuration: ${JSON.stringify(configuration)}`);
+    //console.log(`[all.comm.send] message: ${JSON.stringify(message)}, configuration: ${JSON.stringify(configuration)}`);
     //send will get the nodes in the local context
     distribution.local.groups.get(context.gid, (e, nodes) => {
       if (e) {

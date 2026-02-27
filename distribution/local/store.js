@@ -10,7 +10,7 @@
  */
 
 /* Notes/Tips:
-
+- Store should also implement a unique gid path
 - Use absolute paths to make sure they are agnostic to where your code is running from!
   Use the `path` module for that.
 */
@@ -22,12 +22,18 @@ const util = require('../util/util.js');
  * @param {SimpleConfig} configuration
  * @returns {string | null}
  */
-function normalizeKey(configuration) {
+function normalizeConfig(configuration, state) {
+
   if (configuration == null) {
-    return null;
+    return util.id.getID(state);
   }
+  //use standard format
   if (typeof configuration === 'object') {
-    return configuration.key == null ? null : String(configuration.key);
+    if (!configuration.key || !configuration.gid) {
+      console.log(`[store.normalizeConfig] warning: configuration object ${JSON.stringify(configuration)} missing key or gid`);
+    }
+    configuration.key = distribution.util.id.getID(configuration.key);
+    return `${configuration.key}.${configuration.gid}`
   }
   return String(configuration);
 }
@@ -37,16 +43,13 @@ function normalizeKey(configuration) {
  * @param {SimpleConfig} configuration
  * @param {Callback} callback
  */
-//value, key, callback.
 function put(state, configuration, callback) {
-  let serializedState = util.serialize(state);
-  let key = normalizeKey(configuration);
-  if (configuration == null) {
-    key = util.id.getID(state);
-  }
   if (state == null) {
     return callback(new Error('state cannot be null'));
   }
+  let serializedState = util.serialize(state);
+  let key = normalizeConfig(configuration, state);
+
   const filePath = path.resolve(__dirname, 'store', String(key));
   //make sure the store directory exists
   fs.mkdir(path.dirname(filePath), { recursive: true }, (err) => {
@@ -65,10 +68,11 @@ function put(state, configuration, callback) {
  * @param {Callback} callback
  */
 function get(configuration, callback) {
-  const key = normalizeKey(configuration);
+  const key = normalizeConfig(configuration);
   if (key == null) {
     return callback(new Error('store.get key cannot be null'));
   }
+  
   const filePath = path.resolve(__dirname, 'store', key);
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
@@ -87,8 +91,7 @@ function get(configuration, callback) {
  * @param {Callback} callback
  */
 function del(configuration, callback) {
-  const key = normalizeKey(configuration);
-  //error on null key
+  const key = normalizeConfig(configuration);
   if (key == null) {
     return callback(new Error('store.del key cannot be null'));
   }
