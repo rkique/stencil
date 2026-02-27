@@ -1,4 +1,4 @@
-{
+o{
     "extends": "google",
     "env": {
         "es6": true, // Enable ES6 syntax including new ES6 globals

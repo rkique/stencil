@@ -34,8 +34,9 @@ function store(config) {
     //get the key from the configuration
     console.log(`[store.get] using id for config: ${JSON.stringify(configuration)}`)
     const kid = distribution.util.id.getID(configuration);
-
-    configuration = { key: configuration, gid: context.gid };
+    if (typeof configuration === 'string') {
+      configuration = { key: configuration, gid: context.gid };
+    }
 
     console.log(`[all.store.get] configuration set as ${JSON.stringify(configuration)}`)
     //get the nodes from invocation context
@@ -66,9 +67,14 @@ function store(config) {
     if (configuration == null) {
       kid = distribution.util.id.getID(state);
       configuration = {key: kid, gid: context.gid};
+    //not null case
     } else {
+      if (typeof configuration === 'string') {
+        configuration = { key: configuration, gid: context.gid };
+      } else {
       kid = distribution.util.id.getID(configuration.key);
       configuration = { key: kid, gid: context.gid } }
+    }
 
     console.log(`[all.store.put] configuration set as ${JSON.stringify(configuration)}`)
     //get nodes from invocation context
