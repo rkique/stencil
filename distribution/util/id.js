@@ -66,7 +66,7 @@ function idToNum(id) {
 /** @type { Hasher } */
 //Given a key identifier and node ids (could be nodes), choose the NID at the modulo of KID 
 const naiveHash = (kid, nids) => {
-  console.log(`[naiveHash] kid: ${kid}, nids: ${nids}`);
+  // console.log(`[naiveHash] kid: ${kid}, nids: ${nids}`);
   const sortedNids = [...nids].sort();
   const index = Number(idToNum(kid) % BigInt(sortedNids.length));
   return sortedNids[index];
@@ -74,7 +74,7 @@ const naiveHash = (kid, nids) => {
 
 /** @type { Hasher } */
 const consistentHash = (kid, nids) => {
-  console.log(`[consistentHash] kid: ${kid}, nids: ${nids}`);
+  // console.log(`[consistentHash] kid: ${kid}, nids: ${nids}`);
   const kidNum = idToNum(kid);
   const nidNums = nids.map(nid => idToNum(nid));
   const sortedNidNums = [...nidNums].sort((a, b) => a > b ? 1 : -1);

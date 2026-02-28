@@ -126,14 +126,14 @@
       "throughput": {
         "dev-store-ms": [0.52],
         "dev-mem-ms": [0.50],
-        "aws-store-ms": [0.53],
-        "aws-mem-ms": [0.53]
+        "aws-store-ms": [1.1],
+        "aws-mem-ms": [0.76]
       },
       "latency": {
         "dev-store-ps": [1925],
         "dev-mem-ps": [1995],
-        "aws-store-ps": [1898],
-        "aws-mem-ps": [1988]
+        "aws-store-ps": [912],
+        "aws-mem-ps": [1324]
       },
       "dloc": 150
     },
