@@ -68,10 +68,6 @@ const testInsertionAndQuerying = (method) => {
     }, 500);
 };
 
-console.log('Store')
-testInsertionAndQuerying(distribution.all.store);
-console.log('Mem')
-testInsertionAndQuerying(distribution.all.mem);
 
 //startNodes for preregistered EC2 nodes
 const startCluster = () => {
@@ -89,7 +85,10 @@ const startCluster = () => {
       return;
     }
     console.log("Distributed group created.");
-    runTimedTests();
+    console.log('Store')
+    testInsertionAndQuerying(distribution.all.store);
+    console.log('Mem')
+    testInsertionAndQuerying(distribution.all.mem);
   });
 };
 
