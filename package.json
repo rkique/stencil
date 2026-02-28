@@ -120,7 +120,7 @@
       "latency": {
         "dev-store-ps": [1925],
         "dev-mem-ps": [1995],
-        "aws": []
+        "aws-store-ps": []
       },
       "dloc": 150
     },
