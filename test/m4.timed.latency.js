@@ -2,9 +2,9 @@
 
 const fs = require('fs');
 const path = require('path');
-const distribution = require('../../distribution.js')();
-const status = require('../../distribution/all/status');
-const id = require('../../distribution/util/id.js');
+const distribution = require('../distribution.js')();
+const status = require('../distribution/all/status');
+const id = require('../distribution/util/id.js');
 
 const g1 = {};
 const g2 = {};
