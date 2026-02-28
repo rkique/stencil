@@ -56,7 +56,7 @@ function store(config) {
    */
   function get(configuration, callback) {
     configuration = normalizeConfig(configuration, undefined, true);
-    console.log(`[all.store.get] configuration set as ${JSON.stringify(configuration)}`)
+    // console.log(`[all.store.get] configuration set as ${JSON.stringify(configuration)}`)
     //SyntaxError: Cannot convert jcarbmpg to a BigInt]
     distribution.local.groups.get(context.gid, (e, nodes) => {
 
@@ -81,7 +81,7 @@ function store(config) {
    */
   function put(state, configuration, callback) {
     configuration = normalizeConfig(configuration, state);
-    console.log(`[all.store.put] configuration set as ${JSON.stringify(configuration)}`)
+    // console.log(`[all.store.put] configuration set as ${JSON.stringify(configuration)}`)
 
     distribution.local.groups.get(context.gid, (e, nodes) => {
 
@@ -93,10 +93,9 @@ function store(config) {
       if (!node) {
         return callback(new Error(`Node ${nodeID} not found in group ${context.gid}`));
       }
-      console.log(`[all.store.put] we are using configuration ${JSON.stringify(configuration)}`)
+      // console.log(`[all.store.put] we are using configuration ${JSON.stringify(configuration)}`)
       let remote = { node: node, service: 'store', method: 'put' };
       let message = [state, configuration];
-      //console.log(`[all.store.put] sending store.put kv pair ${configuration}:${JSON.stringify(state)} to node ${JSON.stringify(node)}`);
       return distribution.local.comm.send(message, remote, callback);
     });
   }
