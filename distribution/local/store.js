@@ -49,7 +49,7 @@ function put(state, configuration, callback) {
   }
   let serializedState = util.serialize(state);
   let key = normalizeConfig(configuration, state);
-
+  console.log(`[store.put] normalized key: ${key} for configuration: ${JSON.stringify(configuration)}`)
   const filePath = path.resolve(__dirname, 'store', String(key));
   //make sure the store directory exists
   fs.mkdir(path.dirname(filePath), { recursive: true }, (err) => {

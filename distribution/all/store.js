@@ -26,25 +26,43 @@ function store(config) {
     subset: config.subset,
   };
 
+  function normalizeConfig(configuration, state, is_get=false){
+    let kid;
+    if (configuration == null) {
+      //when call from myggroup.store.null, hash id. 
+      console.log(`using state ${JSON.stringify(state)} to generate key`);
+      kid = distribution.util.id.getID(state);
+      return {key: kid, gid: context.gid};
+    } else {
+      if (typeof configuration === 'string') {
+        // if config already looks like hash, use it
+        if (/^[0-9a-fA-F]+$/.test(configuration)) {
+          return {key: configuration, gid: context.gid};
+        }
+        kid = distribution.util.id.getID(configuration);
+        if (is_get){ return {key: kid, gid: context.gid}; }
+        return { key: kid, gid: context.gid };
+      } else {
+        kid = distribution.util.id.getID(configuration.key);
+        if (is_get){ return {key: configuration.key, gid: context.gid}; }
+        return { key: kid, gid: context.gid };
+      }
+    }
+  }
+
   /**
    * @param {SimpleConfig} configuration
    * @param {Callback} callback
    */
   function get(configuration, callback) {
-    //get the key from the configuration
-    console.log(`[store.get] using id for config: ${JSON.stringify(configuration)}`)
-    const kid = distribution.util.id.getID(configuration);
-    if (typeof configuration === 'string') {
-      configuration = { key: configuration, gid: context.gid };
-    }
-
+    configuration = normalizeConfig(configuration, undefined, true);
     console.log(`[all.store.get] configuration set as ${JSON.stringify(configuration)}`)
-    //get the nodes from invocation context
+    //SyntaxError: Cannot convert jcarbmpg to a BigInt]
     distribution.local.groups.get(context.gid, (e, nodes) => {
 
       if (e) return callback(e);
       const nids = Object.keys(nodes);
-      const nodeID = context.hash(kid, nids);
+      const nodeID = context.hash(configuration.key, nids);
       const node = nodes[nodeID];
 
       if (!node) {
@@ -62,34 +80,20 @@ function store(config) {
    * @param {Callback} callback
    */
   function put(state, configuration, callback) {
-    //allow null config for id
-    let kid;
-    if (configuration == null) {
-      kid = distribution.util.id.getID(state);
-      configuration = {key: kid, gid: context.gid};
-    //not null case
-    } else {
-      if (typeof configuration === 'string') {
-        configuration = { key: configuration, gid: context.gid };
-      } else {
-      kid = distribution.util.id.getID(configuration.key);
-      configuration = { key: kid, gid: context.gid } }
-    }
-
+    configuration = normalizeConfig(configuration, state);
     console.log(`[all.store.put] configuration set as ${JSON.stringify(configuration)}`)
-    //get nodes from invocation context
+
     distribution.local.groups.get(context.gid, (e, nodes) => {
 
       if (e) return callback(e);
       const nids = Object.keys(nodes);
-      const nodeID = context.hash(kid, nids);
-      //use the actual node (node config) enumerated by local.groups.get(context.gid)
+      const nodeID = context.hash(configuration.key, nids);
       const node = nodes[nodeID];
 
       if (!node) {
         return callback(new Error(`Node ${nodeID} not found in group ${context.gid}`));
       }
-      //console.log(`[all.store.put] we are using configuration ${JSON.stringify(configuration)}`)
+      console.log(`[all.store.put] we are using configuration ${JSON.stringify(configuration)}`)
       let remote = { node: node, service: 'store', method: 'put' };
       let message = [state, configuration];
       //console.log(`[all.store.put] sending store.put kv pair ${configuration}:${JSON.stringify(state)} to node ${JSON.stringify(node)}`);
@@ -111,15 +115,12 @@ function store(config) {
    * @param {Callback} callback
    */
   function del(configuration, callback) {
-    //get the key from the configuration
-    const kid = distribution.util.id.getID(configuration);
-
-    //get the nodes in the local context
+    configuration = normalizeConfig(configuration);
     distribution.local.groups.get(context.gid, (e, nodes) => {
 
       if (e) return callback(e);
       const nids = Object.keys(nodes);
-      const nodeID = context.hash(kid, nids);
+      const nodeID = context.hash(configuration.key, nids);
       const node = nodes[nodeID];
 
       if (!node) {

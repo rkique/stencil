@@ -224,7 +224,7 @@ Initializing counts within `node.js` was somewhat confusing, as I misunderstood 
 
 Within the body of `routes.get`, there were several edge cases involving missing defaults. In addition, implementing the `routes` call within `routes.get` was confusing due to the circular dependency.
 
-I struggled with understanding where the callback function for send should be called. Ultimately, the logical place was to have it called with the deserialized response, thus reflecting the remote node function execution correctlyu.
+I struggled with understanding where the callback function for send should be called. Ultimately, the logical place was to have it called with the deserialized response, thus reflecting the remote node function execution correctly.
 
 
 ## Correctness & Performance Characterization
@@ -280,3 +280,27 @@ Once I understood the groups abstraction, implementing syntax for using the comm
 > What is the point of having a gossip protocol? Why doesn't a node just send the message to _all  in its group?
 
 Implementing gossip allows messages to propagate quickly and with a lighter load for each node involved. This is particularly important in developing large systems in which nodes be under geographical constraints, or where partitions might exist between nodes. With gossip protocols, as long as each node implements the correct procedure, nodes will converge to the same eventual value for any particular message.
+
+# M4: Distributed Storage
+
+
+## Summary
+
+My implementation implements temporary and permanent key-value store functionality under the `mem` and `store` services. It does so by instantiating an in-memory dictionary under `mem` and resolving a unique file path identifier within `store`. For both methods, a normalization function is used to standardize inputs and handle null values. The implementation then uses the respective read and write functionality for dictionaries and the filesystem in order to save in memory or persist data to storage. For each distributed method, a call to `groups.get` is first invoked to retrieve all nodes belonging to the respective group identifier. The key identifier is then hashed via `context.hash` to identify the appropriate node. It is assumed that values stored fit within storage and that only a single call is necessary for each item. 
+
+Key challenges included handling edge cases for the configuration and ensuring that the remote key store is accessible via direct RPC of the stored method. Other issues faced were in identifying the appropriate callbacks necessary to perform a remote call to the storage method, and to ensure that the correct node was identified by the node id alone.
+
+## Correctness & Performance Characterization
+
+> Correctness was characterized via student tests, which examined the local mem and store put, get, and del methods in addition to the distributed versions of the same. Tests were likewise implemented for consistent hash and group retrieval functionality. The total amount of time taken by the tests is 100ms.
+
+> Performance was characterized by running `tests/m4.timer.latency` on both development and cloud machines. 
+
+
+## Key Feature
+
+> Why is the `reconf` method designed to first identify all the keys to be relocated and then relocate individual objects instead of fetching all the objects immediately and then pushing them to their corresponding locations?
+
+Fetching all objects at once would require unified storage for all key-value pairs, which is exactly what the distributed system is built to avoid. 
+
+In addition to the memory constraints, the scope of the necessary processing could be much less than all nodes in the system. For instance, with consistent or rendevous hashing, the shards affected by the addition or removal of a node is a small fraction of the total. After moving these objects, the system retains the consistency guarantee that storage is well-balanced between individual nodes.

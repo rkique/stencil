@@ -42,7 +42,7 @@ function send(message, remote, callback) {
     headers: {'Content-Type': 'application/json'}
   };
   const req = http.request(options, (res) => {
-    let data = []; // Use array for safer buffer concatenation
+    let data = []; 
     res.on('data', (chunk) => { data.push(chunk); });
     
     res.on('end', () => {

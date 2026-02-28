@@ -92,19 +92,12 @@ test('(1 pts) student test', (done) => {
 
 
 test('(1 pts) student test', (done) => {
-  const user = {first: 'Josiah', last: 'Carberry'};
-  const key = 'jcarbspcs';
+  const user = {name: 'fFIx', age: 128};
+  const key = '9999';
   const kid = id.getID(key);
-  const nodes = [n1, n2, n3, n4, n5];
-  const nids = nodes.map((node) => id.getNID(node));
-  distribution.g1.store.put(user, key, (e, v) => {
-    const nid = id.naiveHash(kid, nids);
-    const pickedNode = nodes.filter((node) => id.getNID(node) === nid)[0];
-    //get the node for the user.
-    const remote = {node: pickedNode, service: 'store', method: 'get'};
-    const message = [{gid: 'g1', key: key}];
-    //expect gid:g1 pickedNode.store.get to retrieve user node.
-    distribution.local.comm.send(message, remote, (e, v) => {
+  distribution.g3.store.put(user, {key: key, gid: 'g3'}, (e, v) => {
+    if (e) return done(e);
+    distribution.g3.store.get(kid, (e, v) => {
       try {
         expect(e).toBeFalsy();
         expect(v).toEqual(user);
@@ -142,7 +135,7 @@ test('(1 pts) student test', (done) => {
 
 const g1 = {};
 const g2 = {};
-
+const g3 = {};
 const n1 = {ip: '127.0.0.1', port: 9001};
 const n2 = {ip: '127.0.0.1', port: 9002};
 const n3 = {ip: '127.0.0.1', port: 9003};
@@ -193,6 +186,10 @@ beforeAll((done) => {
     g2[id.getSID(n4)] = n4;
     g2[id.getSID(n5)] = n5;
 
+    g3[id.getSID(n2)] = n2;
+    g3[id.getSID(n3)] = n3;
+    g3[id.getSID(n4)] = n4;
+
     // Now, start the nodes listening node
     distribution.node.start((e) => {
       if (e) {
@@ -202,7 +199,10 @@ beforeAll((done) => {
       const groupInstantiation = () => {
         const g1Config = {gid: 'g1'};
         const g2Config = {gid: 'g2', hash: id.rendezvousHash};
+        const g3config = {gid: 'g3'};
+
         // put g2 under g2config, g1 under g1config for local+mygroup
+        distribution.local.groups.put(g3config, g3, (e, v) => {
         distribution.local.groups.put(g2Config, g2, (e, v) => {
           distribution.local.groups.put(g1Config, g1, (e, v) => {
             distribution.g1.groups.put(g1Config, g1, (e, v) => {
@@ -210,6 +210,7 @@ beforeAll((done) => {
             });
           });
         });
+      });
       };
 
       // Start the nodes

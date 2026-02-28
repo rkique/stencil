@@ -43,7 +43,7 @@ let mem = {};
  */
 function put(state, configuration, callback) {
   let key = normalizeConfig(configuration, state);
-  console.log(`[mem.put] putting value with key ${key}`);
+  // console.log(`[mem.put] putting value with key ${key}`);
   if (state == null){
     return callback(new Error('state cannot be null'));
   }
@@ -67,8 +67,7 @@ function append(state, configuration, callback) {
  */
 function get(configuration, callback) {
   let key = normalizeConfig(configuration);
-  console.log(`[mem.get] getting value with key ${key}`);
-  console.log(``);
+  // console.log(`[mem.get] getting value with key ${key}`);
   if (mem[key] == null) {
     return callback(new Error(`mem.get for ${JSON.stringify(configuration)} not found`));
   }
