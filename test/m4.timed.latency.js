@@ -12,12 +12,11 @@ const g2 = {};
 fs.rmSync(path.join(__dirname, '../store'), {recursive: true, force: true});
 fs.mkdirSync(path.join(__dirname, '../store'));
 
-const n1 = {ip: '127.0.0.1', port: 9001};
-const n2 = {ip: '127.0.0.1', port: 9002};
-const n3 = {ip: '127.0.0.1', port: 9003};
-const n4 = {ip: '127.0.0.1', port: 9004};
-const n5 = {ip: '127.0.0.1', port: 9005};
-const n6 = {ip: '127.0.0.1', port: 9006};
+//use: 172.31.46.101 ,  172.31.36.229, 172.31.39.133
+const n1 = {ip: '172.31.46.101', port: 9001};
+const n2 = {ip: '172.31.36.229', port: 9002};
+const n3 = {ip: '172.31.39.133', port: 9003};
+
 
 const remote = {status: 'status', method: 'stop'};
 remote.node = n1;
@@ -70,99 +69,122 @@ const testInsertionAndQuerying = (method) => {
 };
 
 console.log('Store')
-testInsertionAndQuerying(distribution.local.store);
+testInsertionAndQuerying(distribution.all.store);
 console.log('Mem')
-testInsertionAndQuerying(distribution.local.mem);
+testInsertionAndQuerying(distribution.all.mem);
 
-const stopNodes = () => {
-  const remote = {service: 'status', method: 'stop'};
-  remote.node = n1;
-  distribution.local.comm.send([], remote, (e, v) => {
-    remote.node = n2;
-    distribution.local.comm.send([], remote, (e, v) => {
-      remote.node = n3;
-      distribution.local.comm.send([], remote, (e, v) => {
-        remote.node = n4;
-        distribution.local.comm.send([], remote, (e, v) => {
-          remote.node = n5;
-          distribution.local.comm.send([], remote, (e, v) => {
-            remote.node = n6;
-            distribution.local.comm.send([], remote, (e, v) => {
-                console.log('All nodes stopped, closing server');
-              if (globalThis.distribution.node.server) {
-                globalThis.distribution.node.server.close();
-              }
-            });
-          });
-        });
-      });
-    });
+//startNodes for preregistered EC2 nodes
+const startCluster = () => {
+  const g1 = {};
+
+  g1[id.getSID(n1)] = n1;
+  g1[id.getSID(n2)] = n2;
+  g1[id.getSID(n3)] = n3;
+
+  const g1Config = { gid: 'g1' };
+
+  distribution.local.groups.put(g1Config, g1, (e, v) => {
+    if (e) {
+      console.error("Group creation failed:", e);
+      return;
+    }
+    console.log("Distributed group created.");
+    runTimedTests();
   });
-}
+};
 
-const startNodes = () => {
-    g1[id.getSID(n1)] = n1;
-    g1[id.getSID(n2)] = n2;
-    g1[id.getSID(n3)] = n3;
-    g1[id.getSID(n4)] = n4;
-    g1[id.getSID(n5)] = n5;
+startCluster();
 
-    g2[id.getSID(n1)] = n1;
-    g2[id.getSID(n2)] = n2;
-    g2[id.getSID(n3)] = n3;
-    g2[id.getSID(n4)] = n4;
-    g2[id.getSID(n5)] = n5;
-    g2[id.getSID(n6)] = n6;
+//local development
+// const stopNodes = () => {
+//   const remote = {service: 'status', method: 'stop'};
+//   remote.node = n1;
+//   distribution.local.comm.send([], remote, (e, v) => {
+//     remote.node = n2;
+//     distribution.local.comm.send([], remote, (e, v) => {
+//       remote.node = n3;
+//       distribution.local.comm.send([], remote, (e, v) => {
+//         remote.node = n4;
+//         distribution.local.comm.send([], remote, (e, v) => {
+//           remote.node = n5;
+//           distribution.local.comm.send([], remote, (e, v) => {
+//             remote.node = n6;
+//             distribution.local.comm.send([], remote, (e, v) => {
+//                 console.log('All nodes stopped, closing server');
+//               if (globalThis.distribution.node.server) {
+//                 globalThis.distribution.node.server.close();
+//               }
+//             });
+//           });
+//         });
+//       });
+//     });
+//   });
+// }
 
-    //start node listeners
-    distribution.node.start( (e) => {
-        if (e) { console.log(e); return; }
-        const groupInstantiation = () => {
-            const g1Config = {gid: 'g1'};
-            distribution.local.groups.put(g1Config, g1, (e, v) => {
-                console.log('g1 group created');
-            });
-        };
-        distribution.local.status.spawn(n1, (e,v) => {
-            if (e) { console.log(e); return; }
-            distribution.local.status.spawn(n2, (e,v) => {
-                if (e) { console.log(e); return; }
-                distribution.local.status.spawn(n3, (e,v) => {
-                    if (e) { console.log(e); return; }
-                    distribution.local.status.spawn(n4, (e,v) => {
-                        if (e) { console.log(e); return; }
-                        distribution.local.status.spawn(n5, (e,v) => {
-                            if (e) { console.log(e); return; }
-                            distribution.local.status.spawn(n6, (e,v) => {
-                                if (e) { console.log(e); return; }
-                                groupInstantiation();
-                                setTimeout(stopNodes, 2000);
-                            });
-                        });
-                    });
-                });
-            });
-        });
-    });
+// const startNodes = () => {
+//     g1[id.getSID(n1)] = n1;
+//     g1[id.getSID(n2)] = n2;
+//     g1[id.getSID(n3)] = n3;
+//     g1[id.getSID(n4)] = n4;
+//     g1[id.getSID(n5)] = n5;
 
-}
+//     g2[id.getSID(n1)] = n1;
+//     g2[id.getSID(n2)] = n2;
+//     g2[id.getSID(n3)] = n3;
+//     g2[id.getSID(n4)] = n4;
+//     g2[id.getSID(n5)] = n5;
+//     g2[id.getSID(n6)] = n6;
 
-//assign nodes and then start.
-distribution.local.comm.send([], remote, (e, v) => {
-  remote.node = n2;
-  distribution.local.comm.send([], remote, (e, v) => {
-    remote.node = n3;
-    distribution.local.comm.send([], remote, (e, v) => {
-      remote.node = n4;
-      distribution.local.comm.send([], remote, (e, v) => {
-        remote.node = n5;
-        distribution.local.comm.send([], remote, (e, v) => {
-          remote.node = n6;
-          distribution.local.comm.send([], remote, (e, v) => { 
-            startNodes();
-          });
-        });
-      });
-    });
-  });
-});
+//     //start node listeners
+//     distribution.node.start( (e) => {
+//         if (e) { console.log(e); return; }
+//         const groupInstantiation = () => {
+//             const g1Config = {gid: 'g1'};
+//             distribution.local.groups.put(g1Config, g1, (e, v) => {
+//                 console.log('g1 group created');
+//             });
+//         };
+//         distribution.local.status.spawn(n1, (e,v) => {
+//             if (e) { console.log(e); return; }
+//             distribution.local.status.spawn(n2, (e,v) => {
+//                 if (e) { console.log(e); return; }
+//                 distribution.local.status.spawn(n3, (e,v) => {
+//                     if (e) { console.log(e); return; }
+//                     distribution.local.status.spawn(n4, (e,v) => {
+//                         if (e) { console.log(e); return; }
+//                         distribution.local.status.spawn(n5, (e,v) => {
+//                             if (e) { console.log(e); return; }
+//                             distribution.local.status.spawn(n6, (e,v) => {
+//                                 if (e) { console.log(e); return; }
+//                                 groupInstantiation();
+//                                 setTimeout(stopNodes, 2000);
+//                             });
+//                         });
+//                     });
+//                 });
+//             });
+//         });
+//     });
+
+// }
+
+// //assign nodes and then start.
+// distribution.local.comm.send([], remote, (e, v) => {
+//   remote.node = n2;
+//   distribution.local.comm.send([], remote, (e, v) => {
+//     remote.node = n3;
+//     distribution.local.comm.send([], remote, (e, v) => {
+//       remote.node = n4;
+//       distribution.local.comm.send([], remote, (e, v) => {
+//         remote.node = n5;
+//         distribution.local.comm.send([], remote, (e, v) => {
+//           remote.node = n6;
+//           distribution.local.comm.send([], remote, (e, v) => { 
+//             startNodes();
+//           });
+//         });
+//       });
+//     });
+//   });
+// });

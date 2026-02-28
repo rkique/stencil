@@ -94,6 +94,11 @@
         "mem-gb": 16,
         "ssd-gb": 460
       },
+      "aws": {
+        "cpu-no": 2,
+        "mem-gb": 1,
+        "ssd-gb": 7
+      },
       "throughput": {
         "dev-spawn-ps": [9.43],
         "aws-spawn-ps": [7.52]
@@ -113,14 +118,22 @@
         "mem-gb": 16,
         "ssd-gb": 460
       },
+      "aws": {
+        "cpu-no": 2,
+        "mem-gb": 1,
+        "ssd-gb": 7
+      },
       "throughput": {
         "dev-store-ms": [0.52],
-        "dev-mem-ms": [0.50]
+        "dev-mem-ms": [0.50],
+        "aws-store-ms": [0.53],
+        "aws-mem-ms": [0.53]
       },
       "latency": {
         "dev-store-ps": [1925],
         "dev-mem-ps": [1995],
-        "aws-store-ps": []
+        "aws-store-ps": [1898],
+        "aws-mem-ps": [1988]
       },
       "dloc": 150
     },
