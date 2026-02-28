@@ -294,7 +294,7 @@ Key challenges included handling edge cases for the configuration and ensuring t
 
 > Correctness was characterized via student tests, which examined the local mem and store put, get, and del methods in addition to the distributed versions of the same. Tests were likewise implemented for consistent hash and group retrieval functionality. The total amount of time taken by the tests is 100ms.
 
-> Performance was characterized by running `tests/m4.timer.latency` on both development and cloud machines. 
+> Performance was characterized by running tests/m4.timer.latency on both development and cloud machines. The benchmark executed 1000 sequential insert and query operations against both the persistent store and in-memory backends, measuring total execution time to compute average latency (ms per operation) and throughput (operations per second). Tests were performed in three configurations: local single-node execution, distributed execution in the development environment, and distributed deployment across AWS EC2 instances, enabling comparison of backend type (store vs. memory) and deployment environment (local vs. cloud).
 
 
 ## Key Feature

@@ -66,8 +66,10 @@ function append(state, configuration, callback) {
  * @param {Callback} callback
  */
 function get(configuration, callback) {
+  if (configuration == null) {
+    return callback(new Error('mem.get configuration cannot be null'));
+  }
   let key = normalizeConfig(configuration);
-  // console.log(`[mem.get] getting value with key ${key}`);
   if (mem[key] == null) {
     return callback(new Error(`mem.get for ${JSON.stringify(configuration)} not found`));
   }
@@ -79,7 +81,6 @@ function get(configuration, callback) {
  * @param {Callback} callback
  */
 function del(configuration, callback) {
-  //if configuration is not found, return error
   let key = normalizeConfig(configuration);
   if (mem[key] == null) {
     return callback(new Error(`mem.del for ${JSON.stringify(configuration)} not found`));

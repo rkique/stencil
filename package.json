@@ -124,10 +124,10 @@
         "ssd-gb": 7
       },
       "throughput": {
-        "dev-store-insert-ps": [1976],
-        "dev-mem-insert-ps": [1982],
-        "dev-store-query-ps": [1980],
-        "dev-mem-query-ps": [1996],
+        "dev-local-store-insert-ps": [1976],
+        "dev-local-mem-insert-ps": [1982],
+        "dev-local-store-query-ps": [1980],
+        "dev-local-mem-query-ps": [1996],
         "dev-all-store-insert-ps": [1549],
         "dev-all-mem-insert-ps": [1206],
         "dev-all-store-query-ps": [1144],
@@ -135,13 +135,17 @@
         "aws-all-store-insert-ps": [929],
         "aws-all-mem-insert-ps": [965],
         "aws-all-store-query-ps": [1104],
-        "aws-all-mem-query-ps": [1432]
+        "aws-all-mem-query-ps": [1432],
+        "aws-local-store-insert-ps": [1910],
+        "aws-local-mem-insert-ps": [1901],
+        "aws-local-store-query-ps": [1924],
+        "aws-local-mem-query-ps": [1987]
       },
       "latency": {
-        "dev-store-insert-ms": [0.51],
-        "dev-mem-insert-ms": [0.50],
-        "dev-store-query-ms": [0.50],
-        "dev-mem-query-ms": [0.50],
+        "dev-local-store-insert-ms": [0.51],
+        "dev-local-mem-insert-ms": [0.50],
+        "dev-local-store-query-ms": [0.50],
+        "dev-local-mem-query-ms": [0.50],
         "dev-all-store-insert-ms": [0.65],
         "dev-all-mem-insert-ms": [0.83],
         "dev-all-store-query-ms": [0.87],
@@ -149,9 +153,13 @@
         "aws-all-store-insert-ms": [1.08],
         "aws-all-mem-insert-ms": [1.04],
         "aws-all-store-query-ms": [0.91],
-        "aws-all-mem-query-ms": [0.70]
+        "aws-all-mem-query-ms": [0.70],
+        "aws-local-store-insert-ms": [0.52],
+        "aws-local-mem-insert-ms": [0.53],
+        "aws-local-store-query-ms": [0.52],
+        "aws-local-mem-query-ms": [0.50]
       },
-      "dloc": 150
+      "dloc": 350
     },
     {
       "milestone": "M5",

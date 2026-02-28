@@ -68,6 +68,9 @@ function put(state, configuration, callback) {
  * @param {Callback} callback
  */
 function get(configuration, callback) {
+  if (configuration == null) {
+    return callback(new Error('store.get configuration cannot be null'));
+  }
   const key = normalizeConfig(configuration);
   if (key == null) {
     return callback(new Error('store.get key cannot be null'));
