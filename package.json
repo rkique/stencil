@@ -115,9 +115,7 @@
       },
       "throughput": {
         "dev-store-ms": [0.52],
-        "dev-mem-ms": [0.50],
-        "aws1-store-ms":,
-        "aws1-mem-ms":,
+        "dev-mem-ms": [0.50]
       },
       "latency": {
         "dev-store-ps": [1925],
