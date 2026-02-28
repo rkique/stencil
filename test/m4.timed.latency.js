@@ -77,7 +77,7 @@ const testInsertionAndQuerying = (method) => {
 };
 
 
-AWS 
+// AWS 
 const startCluster = () => {
   const g1 = {};
 
