@@ -12,10 +12,18 @@ const g2 = {};
 fs.rmSync(path.join(__dirname, '../store'), {recursive: true, force: true});
 fs.mkdirSync(path.join(__dirname, '../store'));
 
-//use: 172.31.46.101 ,  172.31.36.229, 172.31.39.133
+//EC2 instances
 const n1 = {ip: '172.31.46.101', port: 9001};
 const n2 = {ip: '172.31.36.229', port: 9002};
 const n3 = {ip: '172.31.39.133', port: 9003};
+
+//local dev
+// const n1 = {ip: '127.0.0.1', port: 9001};
+// const n2 = {ip: '127.0.0.1', port: 9002};
+// const n3 = {ip: '127.0.0.1', port: 9003};
+// const n4 = {ip: '127.0.0.1', port: 9004};
+// const n5 = {ip: '127.0.0.1', port: 9005};
+// const n6 = {ip: '127.0.0.1', port: 9006};
 
 
 const remote = {status: 'status', method: 'stop'};
@@ -69,7 +77,7 @@ const testInsertionAndQuerying = (method) => {
 };
 
 
-//startNodes for preregistered EC2 nodes
+AWS 
 const startCluster = () => {
   const g1 = {};
 
@@ -86,40 +94,39 @@ const startCluster = () => {
     }
     console.log("Distributed group created.");
     console.log('Store')
-    testInsertionAndQuerying(distribution.all.store);
+    testInsertionAndQuerying(distribution.local.store);
     console.log('Mem')
-    testInsertionAndQuerying(distribution.all.mem);
+    testInsertionAndQuerying(distribution.local.mem);
   });
 };
-
 startCluster();
 
 //local development
-// const stopNodes = () => {
-//   const remote = {service: 'status', method: 'stop'};
-//   remote.node = n1;
-//   distribution.local.comm.send([], remote, (e, v) => {
-//     remote.node = n2;
-//     distribution.local.comm.send([], remote, (e, v) => {
-//       remote.node = n3;
-//       distribution.local.comm.send([], remote, (e, v) => {
-//         remote.node = n4;
-//         distribution.local.comm.send([], remote, (e, v) => {
-//           remote.node = n5;
-//           distribution.local.comm.send([], remote, (e, v) => {
-//             remote.node = n6;
-//             distribution.local.comm.send([], remote, (e, v) => {
-//                 console.log('All nodes stopped, closing server');
-//               if (globalThis.distribution.node.server) {
-//                 globalThis.distribution.node.server.close();
-//               }
-//             });
-//           });
-//         });
-//       });
-//     });
-//   });
-// }
+const stopNodes = () => {
+  const remote = {service: 'status', method: 'stop'};
+  remote.node = n1;
+  distribution.local.comm.send([], remote, (e, v) => {
+    remote.node = n2;
+    distribution.local.comm.send([], remote, (e, v) => {
+      remote.node = n3;
+      distribution.local.comm.send([], remote, (e, v) => {
+        remote.node = n4;
+        distribution.local.comm.send([], remote, (e, v) => {
+          remote.node = n5;
+          distribution.local.comm.send([], remote, (e, v) => {
+            remote.node = n6;
+            distribution.local.comm.send([], remote, (e, v) => {
+                console.log('All nodes stopped, closing server');
+              if (globalThis.distribution.node.server) {
+                globalThis.distribution.node.server.close();
+              }
+            });
+          });
+        });
+      });
+    });
+  });
+}
 
 // const startNodes = () => {
 //     g1[id.getSID(n1)] = n1;
@@ -157,6 +164,10 @@ startCluster();
 //                             distribution.local.status.spawn(n6, (e,v) => {
 //                                 if (e) { console.log(e); return; }
 //                                 groupInstantiation();
+//                                     console.log('Store')
+//                                     testInsertionAndQuerying(distribution.local.store);
+//                                     console.log('Mem')
+//                                     testInsertionAndQuerying(distribution.local.mem);
 //                                 setTimeout(stopNodes, 2000);
 //                             });
 //                         });
